@@ -1,7 +1,7 @@
 """
 Definition of views.
 """
-
+from django.contrib import messages
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -11,4 +11,5 @@ def homepage(request):
 
 def about(request):
    # return HttpResponse('about')
-   return render(request,'about.html')
+   messages.success(request, "udalo sie zaladowac strone!");
+   return render(request,'secondpage.html')
