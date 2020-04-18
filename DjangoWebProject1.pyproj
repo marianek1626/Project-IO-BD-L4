@@ -81,6 +81,7 @@
     <Content Include="app\static\app\images\services2.png" />
     <Content Include="app\static\app\images\services3.png" />
     <Content Include="app\static\app\style\style.css" />
+    <Content Include="app\templates\secondpage.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
     <Content Include="app\static\app\content\bootstrap.css" />
