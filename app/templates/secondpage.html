@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+	<head>
+		<title>Profesjonalne us�ugi fryzjerskie w Pruszkowie - Salon Fryzjerski Ewa Jars</title>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2" />
+<link rel="stylesheet" type="text/css" media="print" href="styles/print.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="styles/table-less-1.css" />
+</head>
+<body>
+<div style="text-align: center">
+  <div id="mainbody">
+        <div id="header">
+      <h1> PRZYKLADOWA STRONA</h1>
+      <h2><a href="http://127.0.0.1:8000/app">Wroc na 1 strone</a></h2>
+      <h6>[Strona %/app/ a nie %8000/ (to ta sama strona)]</h6> 
+    </div>
+    <div id="leftcol">
+      <div class="title">
+
+<h1> Django Messages Framework</h1>
+
+<h2>Jezeli strona sie zaladowala powinien widnieć tekst </br>"udalo sie zaladowac strone!" </h2>
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+<!--  <li{% if message.tags %} class="{{ message.tags }}"{%endif%}>{{message}}</li>
+-->
+<h1{% if message.tags %} class="{{ message.tags }}"{%endif%}>Wiadomosc: {{message}}</h1>
+  {%endfor%}
+</ul>
+{% endif %}
+<h3>Problem: jezeli strona sie nie zaladuje to i tak nic nie zobaczymy, ale fajnie ze tekst nie jest wpisany w pliku html :)</h3>
+
+
+  </div>
+</div>
+</body>
+</html>
