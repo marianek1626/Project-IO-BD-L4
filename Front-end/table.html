@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Table</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var headers = ["Użytkownik", "Sala", "Urządzenie", "Data", "Czas"];
+      let rezerwacjeString =
+        '[{"user": "Jan Nowak","room": "Druku i skanowania 3D", "device": "Drukarka 3D", "date": "25.03.2020", "time": "7:00 - 8:30"},{"user": "Karol Kowalski","room": "Elektroniczna", "device": "Oscyloskop", "date": "20.04.2020", "time": "10:30 - 11:30"},{"user": "Karolina Nowak","room": "Konferencyjna", "device": "Projektor", "date": "15.04.2020", "time": "12:00 - 14:00"}]';
+      let rezerwacje = JSON.parse(rezerwacjeString);
+      var count = Object.keys(rezerwacje).length;
+      var body = document.body;
+      var table = document.createElement("table");
+      table.className += "content-table";
+      for (var i = 0; i <= count; i++) {
+        var row = table.insertRow();
+        for (var j = 0; j < 5; j++) {
+          var cell = row.insertCell();
+          if (i == 0) {
+            var field = document.createTextNode(headers[j]);
+            cell.className += "table-headers";
+            cell.appendChild(field);
+          } else {
+            switch (j) {
+              case 0:
+                var field = document.createTextNode(rezerwacje[i - 1].user);
+                cell.className += "table-rows";
+                cell.appendChild(field);
+                break;
+              case 1:
+                var field = document.createTextNode(rezerwacje[i - 1].room);
+                cell.className += "table-rows";
+                cell.appendChild(field);
+                break;
+              case 2:
+                var field = document.createTextNode(rezerwacje[i - 1].device);
+                cell.className += "table-rows";
+                cell.appendChild(field);
+                break;
+              case 3:
+                var field = document.createTextNode(rezerwacje[i - 1].date);
+                cell.className += "table-rows";
+                cell.appendChild(field);
+                break;
+              case 4:
+                var field = document.createTextNode(rezerwacje[i - 1].time);
+                cell.className += "table-rows";
+                cell.appendChild(field);
+                break;
+              default:
+                var field = document.createTextNode("Error");
+                cell.className += "table-rows";
+                cell.appendChild(field);
+                break;
+            }
+          }
+        }
+      }
+      body.appendChild(table);
+    </script>
+  </body>
+</html>
