@@ -7,13 +7,27 @@ from django.contrib import admin
 from app import views
 from django.urls import include, path
 
+
 #urlpatterns = [
 #    url(r'^admin/',admin.site.urls),
 #    url(r'^about/$',views.about),
 #    url(r'^$',views.homepage),
 #    ]
 urlpatterns = [
-    path('', views.homepage, name='homepage'),
+    path('', views.layout, name='layout'),
+    path('homepage/', views.homepage, name='homepage'),
+    path('calendar/', views.calendar, name='calendar'),
     path('app/', include('app.urls')),
     path('admin/', admin.site.urls),
+    #url(r'^api-auth/', include('rest_framework.urls')),
+    #path('testRestConsumer',views.testRestConsumer, name='testRestConsumer'),
+    path('login/', views.loginPage, name='login'),
+    path('register/', views.registerPage, name='register'),
+    path('rezerwacje/', views.rezerwacje, name='rezerwacje'),
+    path('sale/', views.sale, name='sale'),
+    path('stanowiska/', views.stanowiska, name='stanowiska'),
+    path('createrezerwacje/', views.createrezerwacje, name='createrezerwacje'),
+    path('updaterezerwacje/<int:id>', views.updaterezerwacje, name='updaterezerwacje'),
+    path('deleterezerwacje/<int:id>', views.deleterezerwacje, name='deleterezerwacje'),
+    
 ]

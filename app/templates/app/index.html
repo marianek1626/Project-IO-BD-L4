@@ -1,33 +1,45 @@
-{% extends "app/layout.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pracownie App</title>
 
-{% block content %}
+     <style>
+    #szablon
+        {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 1000px;
+        background-color: cyan;
+        }
+     </style>
+</head>
+<div id="szablon">
+<div id="tytul">
+    <h1>MENU</h1>
+    <br/><br/>
+    </div>
+    <h2>
+        <a href="pracownie.html"  style="background-color:chartreuse;">Pracownie</a>
+        <br/><br/>
+        <a href="stanowiska.html"  style="background-color:chartreuse;">Stanowiska</a>
+        <br/><br/>
+        <a href="rezerwacje.html"  style="background-color:chartreuse;">Twoje rezerwacje</a>
+        <br/><br/>
+        <a href="addrezerwacje.html"  style="background-color:chartreuse;">Dodaj rezerwacje</a>
+        <br/><br/>
+        <a href="deleterezerwacje.html"  style="background-color:chartreuse;">Usuń rezerwacje</a>
+        <br/><br/>
+        <a href="wylogowano.html"  style="background-color:chartreuse;">Wyloguj</a>
+    </h2>
 
-<div class="jumbotron">
-    <h1>Django</h1>
-    <p class="lead">Django is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://www.djangoproject.com/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+   <center>
+       <a href="update/{{RodzajSali.id}}" class="btn btn-warning" id = '{{Rodzajsali.id_rodzaju_sali}}'>edit</a>
+       <a href="delete/{{RodzajSali.id}}" class="btn btn-danger" id = '{{RodzajSali.id_rodzaju_sali}}'>delete</a>
+    </center>
+
+
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Django gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://djangobook.com/django-tutorials/">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.org/">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
-</div>
-
-{% endblock %}
+</body>
+</html>

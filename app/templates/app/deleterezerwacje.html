@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pracownie App</title>
+    <style>
+      #szablon
+        {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 1000px;
+        background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+<div id="szablon">
+    <div>
+<h1>Usuń rezerwacje</h1>
+    <form oninput="date.value=dzien.value" oninput="time.value=appt.value"
+    oninput="text.value=stanowisko.value">
+
+    <h3>Data:</h3>
+   <input data="date" id="dzien" value="">
+    <h3>Godzina:</h3>
+    <input czas="time" id="appt" value="">
+    <h3>Stanowisko</h3>
+    <input stanowisko="text" id="stanowisko" value="">
+<h2>
+    <output name="date" >
+        <br/><br/>
+        </output>
+    <output name="time" >
+        <br/><br/>
+        </output>
+    <output name="text" >
+     <br/><br/>
+    </output>
+</h2>
+</form>
+      </div>
+<br/><br/>
+    <a href="{% url 'delete_rezerwacje' rezerwacja.id %}">Delete</a>
+<h2>
+    <a href="index.html"  style="background-color:chartreuse;">Strona główna</a>
+        <br/><br/>
+  </h2>
+</div>
+
+</body>
+</html>

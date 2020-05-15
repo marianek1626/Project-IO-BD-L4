@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pracownie App</title>
+   <style>
+   #szablon
+        {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        width: 1000px;
+        background-color: cyan;
+        }
+    </style>
+</head>
+<body >
+<div id="szablon">
+<h1>Rola</h1>
+    <br/><br/>
+            <table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+    <tr>
+        <th>Rola ID</th>
+        <th>Nazwa roli</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for a in rol %}
+    <tr>
+        <td>{{ a.id_roli }}</td>
+        <td>{{ a.nazwa_roli }}</td>
+
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<h2>
+        <a href="index.html"  style="background-color:chartreuse;">Strona główna</a>
+        <br/><br/>
+    </h2>
+</div>
+
+</body>
+</html>
