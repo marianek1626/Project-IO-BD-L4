@@ -1,45 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Pracownie App</title>
-
-     <style>
-    #szablon
-        {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        width: 1000px;
-        background-color: cyan;
-        }
-     </style>
-</head>
-<div id="szablon">
-<div id="tytul">
-    <h1>MENU</h1>
-    <br/><br/>
-    </div>
-    <h2>
-        <a href="pracownie.html"  style="background-color:chartreuse;">Pracownie</a>
-        <br/><br/>
-        <a href="stanowiska.html"  style="background-color:chartreuse;">Stanowiska</a>
-        <br/><br/>
-        <a href="rezerwacje.html"  style="background-color:chartreuse;">Twoje rezerwacje</a>
-        <br/><br/>
-        <a href="addrezerwacje.html"  style="background-color:chartreuse;">Dodaj rezerwacje</a>
-        <br/><br/>
-        <a href="deleterezerwacje.html"  style="background-color:chartreuse;">Usuń rezerwacje</a>
-        <br/><br/>
-        <a href="wylogowano.html"  style="background-color:chartreuse;">Wyloguj</a>
-    </h2>
-
-   <center>
-       <a href="update/{{RodzajSali.id}}" class="btn btn-warning" id = '{{Rodzajsali.id_rodzaju_sali}}'>edit</a>
-       <a href="delete/{{RodzajSali.id}}" class="btn btn-danger" id = '{{RodzajSali.id_rodzaju_sali}}'>delete</a>
-    </center>
-
-
-</div>
-
-</body>
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+     <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
+  </head>
+  <body>
+    <nav class="lognav"> 
+      <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
+      <ul class="loglist">
+        <li><a href="{% url 'login' %}" class="reglog">Zaloguj</a></li>
+      </ul>
+    </nav>
+    <section><div class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1>System Rezerwacji Sal</h1>
+                <p>Rezerwacja sal w siedzibie PCI</p>
+                <a href="{% url 'sale' %}" class="btn-one">Przejdź dalej</a>
+            </div>
+        </div>
+        </div>
+        </section>
+  </body>
 </html>

@@ -35,12 +35,14 @@
     <Compile Include="app\admin.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\backends.py" />
     <Compile Include="app\forms.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\services.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\tests.py" />
+    <Compile Include="app\urls.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
@@ -111,6 +113,7 @@
     <Folder Include="app\static\app\style\cal_daygrid\" />
     <Folder Include="app\static\app\style\cal_list\" />
     <Folder Include="app\static\app\style\cal_timegrid\" />
+    <Folder Include="app\static\app\style\index\" />
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="app\static\app\images\" />
@@ -490,6 +493,8 @@
     <Content Include="app\static\app\style\cal_list\main.min.css" />
     <Content Include="app\static\app\style\cal_timegrid\main.css" />
     <Content Include="app\static\app\style\cal_timegrid\main.min.css" />
+    <Content Include="app\static\app\style\index\main.css" />
+    <Content Include="app\static\app\style\index\mainbannerstyle.css" />
     <Content Include="app\static\app\style\style_registration.css" />
     <Content Include="app\templates\accounts\register.html" />
     <Content Include="app\templates\app\addrezerwacje.html" />

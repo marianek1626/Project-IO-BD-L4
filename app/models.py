@@ -1,9 +1,11 @@
 """
 Definition of models.
 """
-
+from django.utils import timezone
 from django.db import models
-
+from django.contrib.auth.models import update_last_login
+from django.contrib.auth.signals import user_logged_in
+from django.contrib.auth.models import PermissionsMixin
 # Create your models here.
 
 #class users(models.Model):
@@ -17,7 +19,14 @@ from django.db import models
 #    def _str_(self):
 #        return self.firstname
 
-
+#def update_last_login(sender, user, **kwargs):
+#    """
+#    A signal receiver which updates the last_login date for
+#    the user logging in.
+#    """
+#    user.last_login = timezone.now()
+#    user.save(update_fields=['last_login'])
+user_logged_in.disconnect(update_last_login, dispatch_uid='update_last_login')
 
 
 class OpiekunSali(models.Model):
@@ -30,17 +39,26 @@ class OpiekunSali(models.Model):
     class Meta:
         managed = True
         db_table = 'opiekun_sali'
+        verbose_name_plural = 'Opiekunowie Sali'
 
 
 class Rezerwacja(models.Model):
     id_rezerwacji = models.AutoField(primary_key=True)
     id_uzytkownika = models.ForeignKey('Uzytkownik', models.DO_NOTHING, db_column='id_uzytkownika')
-    data_zgloszenia = models.DateTimeField()
+    event_name = models.CharField(max_length=255, null=True, blank=True)
+    start_date = models.DateTimeField(null=True, blank=True)
+    end_date = models.DateTimeField(null=True, blank=True)
     czy_anulowana = models.BooleanField()
+    event_type = models.CharField(max_length=10, null=True, blank=True)
+
+    def __str__(self):
+        return str(self.event_name)
 
     class Meta:
         managed = True
         db_table = 'rezerwacja'
+        verbose_name = 'Rezerwacja'
+        verbose_name_plural = 'Rezerwacje'
 
 
 class RezerwacjaStanowiska(models.Model):
@@ -54,6 +72,7 @@ class RezerwacjaStanowiska(models.Model):
     class Meta:
         managed = True
         db_table = 'rezerwacja_stanowiska'
+        verbose_name_plural = 'Rezerwacje Stanowiska'
 
 
 class RodzajSali(models.Model):
@@ -63,7 +82,7 @@ class RodzajSali(models.Model):
     class Meta:
         managed = True
         db_table = 'rodzaj_sali'
-
+        verbose_name_plural = 'Rodzaje Sali'
 
 class Rola(models.Model):
     id_roli = models.AutoField(primary_key=True)
@@ -72,7 +91,7 @@ class Rola(models.Model):
     class Meta:
         managed = True
         db_table = 'rola'
-
+        verbose_name_plural = 'Role'
 
 class Sala(models.Model):
     id_sali = models.AutoField(primary_key=True)
@@ -86,7 +105,7 @@ class Sala(models.Model):
     class Meta:
         managed = True
         db_table = 'sala'
-
+        verbose_name_plural = 'Sale'
 
 class Stanowisko(models.Model):
     id_stanowiska = models.AutoField(primary_key=True)
@@ -95,11 +114,13 @@ class Stanowisko(models.Model):
     opis_stanowiska = models.TextField(blank=True, null=True)
     stopien_zaawansowania = models.IntegerField()
     czy_dostepne = models.BooleanField()
-    zdjecie = models.ImageField(blank=True, null=True)
+    #zdjecie = models.ImageField(blank=True, null=True)
 
     class Meta:
         managed = True
         db_table = 'stanowisko'
+        verbose_name_plural = 'Stanowiska'
+
 
 
 class Uzytkownik(models.Model):
@@ -110,6 +131,26 @@ class Uzytkownik(models.Model):
     email = models.CharField(max_length=128)
     haslo = models.CharField(max_length=128)
 
+    is_superuser = models.IntegerField(default=False)
+    #last_login = models.DateTimeField(('last login'), default=timezone.now)
+    is_staff = models.BooleanField(('staff status'),default=False)
+
+    def is_active(self):
+     return True
+
+    def get_username(self):
+     return self.email
+
+    def is_authenticated(self):
+        return True
+
+    def has_perm(self, perm, obj=None):
+     return self.is_superuser
+
+    def has_module_perms(self, app_label):
+     return self.is_superuser
+    
     class Meta:
         managed = True
         db_table = 'uzytkownik'
+        verbose_name_plural = 'Użytkownicy'

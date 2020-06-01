@@ -7,36 +7,40 @@
     <title>Kalendarz</title>
     {% load static %}
 
-    <link href="{% static 'app/style/cal_core/main.min.css'%}" rel='stylesheet'  />
+    <link href="{% static 'app/style/cal_core/main.min.css'%}" rel='stylesheet' />
     <link href="{% static 'app/style/cal_daygrid/main.min.css'%}" rel='stylesheet' />
-    <link rel="stylesheet" href="{% static 'app/style/cal_list/main.min.css'%}"/>
-    <link rel="stylesheet" href="{% static 'app/style/cal_list/main.min.css../../static/app/style/cal_timegrid/main.css'%}"/>
-    <link rel="stylesheet" href="{% static 'app/style/cal_list/main.min.css../../static/app/style/cal_bootstrap/main.min.css'%}"/>
-    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="{% static 'app/style/cal_list/main.min.css'%}" />
+    <link rel="stylesheet" href="{% static 'app/style/cal_timegrid/main.css'%}" />
+    <link rel="stylesheet" href="{% static 'app/style/cal_bootstrap/main.min.css'%}" />
+    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet' />
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
-    <script src="{% static 'app/scripts/jquery-3.4.1.min.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_moment/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_core/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_daygrid/main.js'%}" ></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="{% static 'app/scripts/jquery-3.4.1.min.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_moment/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_core/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_daygrid/main.js'%}"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js'></script>
-    <script src="{% static 'app/scripts/cal_timegrid/main.js'%}" ></script>
+    <script src="{% static 'app/scripts/cal_timegrid/main.js'%}"></script>
 
-    <script src="{% static 'app/scripts/cal_core/locales/pl.js'%}" ></script>
+    <script src="{% static 'app/scripts/cal_core/locales/pl.js'%}"></script>
 
-    <script src="{% static 'app/scripts/myCalendar.js'%}" ></script>
-    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js' ></script>
-    <script src="{% static 'app/scripts/cal_bootstrap/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_google-calendar/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_interaction/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_luxon/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_moment-timezone/main.js'%}" ></script>
-    <script src="{% static 'app/scripts/cal_rrule/main.js'%}" ></script>
-
+    <script src="{% static 'app/scripts/myCalendar.js'%}"></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.1.1/fullcalendar.min.js'></script>
+    <script src="{% static 'app/scripts/cal_bootstrap/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_google-calendar/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_interaction/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_luxon/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_moment-timezone/main.js'%}"></script>
+    <script src="{% static 'app/scripts/cal_rrule/main.js'%}"></script>
+   
+    
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var calendarEl = document.getElementById('calendar');
+     
+    document.addEventListener('DOMContentLoaded', function () {
+       var calendarEl = document.getElementById('calendar');
 
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+       var calendar = new FullCalendar.Calendar(calendarEl, {
                 plugins: ['interaction', 'dayGrid', 'timeGrid', 'bootstrap', ],
                 themeSystem: 'Darkly',
                 defaultView: "dayGridMonth",
@@ -46,22 +50,26 @@
                     right: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
                 hiddenDays: [0],
+                weekNumbers: true,
                 selectable: true,
+                selectMirror: true,
                 selectHelper: true,
                 editable: true,
                 businessHours: true,
                 eventLimit: true,
-
-                //nowIndicator: true,
-                //slotDuration: "00:30",
-                //minTime: "08:00",
-                //maxTime: "22:00",
-                //allDaySlot: true,
-                //locale: "pl",
+                navLinks: true,
+                nowIndicator: true,
+                slotDuration: "00:30",
+                minTime: "08:00",
+                maxTime: "22:00",
+                allDaySlot: false,
+                locale: "pl",
 
                 timeFormat: 'H(:mm)',
                 //timeZone: 'Europe/Warsaw',
-                height: 800,
+
+                // height: 800,
+                // ascpectRatio: 0.5,
                 titleFormat: { // will produce something like "Tuesday, September 18, 2018"
                     month: 'short',
                     year: 'numeric',
@@ -97,10 +105,53 @@
                     }
                 },
 
-                events: function (fetchInfo, successCallback, failureCallback) {
-                    successCallback(eventsArray);
-                },
-                select: function (info, start, end, jsEvent, view) {
+
+                //events: function (fetchInfo, successCallback, failureCallback) {
+                    //successCallback("{ static 'app/scripts/events.json' }");
+                //},
+
+
+
+                 //EVENTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        events: [
+    {% for i in events %}
+             {
+                  title: "{{ i.event_name}}",
+                  start: '{{ i.start_date|date:"Y-m-d" }}T{{ i.start_date|time:"H:i"}}',
+                  end: '{{ i.end_date|date:"Y-m-d" }}T{{ i.end_date|time:"H:i" }}',
+              },
+          {% endfor %}
+        ],
+
+
+
+
+                select: function(start, end, resource) {
+               var title = 'new';
+               var eventData;
+               if (title) {
+                  eventData = {
+                     title: title,
+                     start: start,
+                     end: end,
+                   };
+                   
+                   $('#calendar').fullCalendar('renderEvent', eventData, true);
+                   $.ajax({
+                       url: '/calendar/',
+                       type: "GET",
+                       data: eventData,
+                     success: function(jsonResponse) {
+                        alert("Dodano zdarzenie")
+                     },
+                     error: function(jsonResponse) {
+                        alert("cannot insert!")
+                     }
+                  });
+                }
+            },
+                /*select: function (info, start, end, jsEvent, view) {
                     var obj = {};
                     obj.title = prompt("Tytuł:");
                     obj.start = moment(info.startStr).format("YYYY-MM-DD");
@@ -109,26 +160,73 @@
                     obj.overlap = false;
                     obj.rendering = 'background';
                     obj.color = '#ff9f89';
-                    //eventsArray.push(obj);
+                    eventsArray.push(obj);
                     console.log(obj);
-                    //$('#calendar').fullCalendar('renderEvent', obj, true);
+                    $('#calendar').fullCalendar('renderEvent', obj, true);
                     if (obj.title != null) {
                         calendar.addEvent({
                             title: obj.title,
                             start: obj.start,
-                            //overlap: obj.overlap,
-                            //rendering: obj.rendering,
-                            //color: obj.color,
+                            overlap: obj.overlap,
+                            rendering: obj.rendering,
+                            color: obj.color,
                             end: obj.end,
                             allDay: obj.allDay,
                         });
                     } else
                         alert('Nie podałeś tytułu!');
-                },
-            });
+                    var eventData;
+                    eventData = {
+                     title: obj.title,
+                     start: obj.start,
+                     end: obj.end,
+                     allDay: true,
+                     csrfmiddlewaretoken:$('input[obj.title=csrfmiddlewaretoken]').val()
+                  };
+                $.ajax({
+                     url: '/calendar',
+                     type: "GET",
+                     data: eventData,
+                     success: function(jsonResponse) {
+                        alert("Dodano zdarzenie")
+                     },
+                     error: function(jsonResponse) {
+                        alert("cannot insert!")
+                     }
+                  });
+                },*/
+                // select: function (arg) {
+                //     var title = prompt('Podaj tytuł:');
+                //     if (title) {
+                //         calendar.addEvent({
+                //             title: title,
+                //             start: arg.start,
+                //             end: arg.end,
+                //             allDay: arg.allDay
+                //         })
+                //     }
+                //     calendar.unselect()
+                // },
+                // events: "{ static 'app/scripts/events.json' }",
+                });
             calendar.render();
-        });
+    });
     </script>
+    <script>
+    </script>
+    <style>
+        body {
+    margin: 40px 10px;
+    padding: 0;
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+  }
+
+  #calendar {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+    </style>
 </head>
 
 <body>

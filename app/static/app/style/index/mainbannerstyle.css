@@ -1,0 +1,86 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.banner {
+  background-image: url(../../images/banery/mainbanner.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: calc(100vh - 25px);
+}
+
+.banner-content {
+  color: #fff;
+  padding-top: 150px;
+  text-align: center;
+}
+
+/* .banner-content span {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 3px;
+} */
+
+.banner-content h1 {
+  margin-bottom: 10px;
+  font-size: 60px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-family: sans-serif;
+  text-shadow: 2px 2px #000;
+}
+
+.banner-content p {
+  margin-bottom: 40px;
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+.banner-content a {
+  text-decoration: none;
+}
+
+.banner-content .btn-one {
+  padding: 10px 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid #fff;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: #fff;
+}
+
+/* .banner-content .btn-two {
+  padding: 10px 30px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: #000;
+} */
+
+.banner-content .btn-one:hover {
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+}
+
+/* .banner-content .btn-two:hover {
+  background-color: #000;
+  border: 2px solid #fff;
+  color: #fff;
+} */
+
+@media (max-width: 768px) {
+  .banner-content h1 {
+    font-size: 50px;
+  }
+}

@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     #'rest_framework',
 ]
 
-
+AUTHENTICATION_BACKENDS = ['app.backends.UserAuthBackend', 'django.contrib.auth.backends.ModelBackend']
 
 # Middleware framework
 # https://docs.djangoproject.com/en/2.1/topics/http/middleware/

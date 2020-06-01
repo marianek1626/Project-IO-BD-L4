@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/subbannerstyle.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/galeriastyle.css" %}"/>
+  </head>
+  
+
+  <body>
+    <nav class="lognav">
+      <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
+      <ul class="loglist">
+        <li><a href="{% url 'login' %}" class="reglog">Zaloguj</a></li>
+      </ul>
+    </nav>
+    <div class="banner">
+      <div class="container">
+        <div class="banner-content">
+          <h1>Pracownie</h1>
+        </div>
+      </div>
+      </div>
+ 
+    <div class="workshops">
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/warsztat.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/warsztat.jpg" %}" alt="warsztat"
+          /></a>
+          <div class="des">Warsztat</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/ar-vr.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/ar-vr.jpg" %}" alt="ar-vr"
+          /></a>
+          <div class="des">AR, VR, 360, Audio-Video</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/3d.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/3d.jpg" %}" alt="3d"
+          /></a>
+          <div class="des">Druku 3D i skanowania 3D</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/hi-end.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/hi-end.jpg" %}" alt="hi-end"
+          /></a>
+          <div class="des">Komputerowa Hi-End</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/aula.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/aula.jpg" %}" alt="aula"
+          /></a>
+          <div class="des">Aula</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/elektroniczna.jpg" %}" target="_blank"
+            ><img
+              src="{% static "app/images/pracownie/elektroniczna.jpg" %}"
+              alt="elektroniczna"
+          /></a>
+          <div class="des">Elektroniczna</div>
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/konferencyjna.jpg" %}" target="_blank"
+            ><img
+              src="{% static "app/images/pracownie/konferencyjna.jpg" %}"
+              alt="konferencyjna"
+          /></a>
+          <div class="des">Konferencyjna</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+nav {
+  width: 100%;
+}
+
+nav.lognav {
+  background: #021625;
+  height: 25px;
+}
+
+label.logo {
+  color: white;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+label.logo a {
+  color: white;
+}
+
+nav ul {
+  float: right;
+  padding-right: 20px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+nav.lognav ul.loglist li {
+  line-height: 25px;
+}
+
+nav ul li a {
+  color: white;
+  padding: 0 13px;
+}
+
+a.reglog {
+  font-size: 17px;
+}
+
+.reglog:hover {
+  background: #1b9bff;
+  transition: 0.5s;
+}
+
+@media (max-width: 768px) {
+  a.reglog {
+    font-size: 16px;
+  }
+
+  ul.loglist {
+    margin-right: 20px;
+  }
+
+  a:hover {
+    background: none;
+    color: #0082e6;
+  }
+
+  nav ul {
+    padding-right: 5px;
+  }
+}
+
+@media (min-width: 1904px) {
+  nav.lognav {
+    height: 50px;
+  }
+  nav.lognav ul.loglist li {
+    line-height: 50px;
+  }
+  a.reglog {
+    font-size: 32px;
+  }
+
+  label.logo {
+    font-size: 70px;
+  }
+}

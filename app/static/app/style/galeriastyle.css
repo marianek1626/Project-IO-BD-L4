@@ -1,0 +1,34 @@
+.workshops {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.gallery {
+  border: 1px solid #ccc;
+}
+
+.gallery a img {
+  width: 100%;
+  height: 150px;
+}
+
+.des {
+  padding: 15px;
+  text-align: center;
+}
+
+.responsive {
+  padding: 6px 6px;
+  float: left;
+  width: 50%;
+}
+
+@media only screen and (max-width: 700px) {
+  .workshops {
+    width: 80%;
+  }
+  .responsive {
+    width: 100%;
+    margin: 6px 0;
+  }
+}

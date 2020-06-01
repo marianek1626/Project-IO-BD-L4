@@ -8,15 +8,20 @@ from app import views
 from django.urls import include, path
 
 
+
 #urlpatterns = [
 #    url(r'^admin/',admin.site.urls),
 #    url(r'^about/$',views.about),
 #    url(r'^$',views.homepage),
 #    ]
+
+
+
+
 urlpatterns = [
-    path('', views.layout, name='layout'),
+    path('', views.index, name='index'),
     path('homepage/', views.homepage, name='homepage'),
-    path('calendar/', views.calendar, name='calendar'),
+    path('calendar/', views.event, name='calendar'),
     path('app/', include('app.urls')),
     path('admin/', admin.site.urls),
     #url(r'^api-auth/', include('rest_framework.urls')),
