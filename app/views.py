@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 #import services
 import requests
 import json
+from django.http import JsonResponse
 from .models import Sala, OpiekunSali, Rezerwacja, RezerwacjaStanowiska, RodzajSali, Rola, Stanowisko, Uzytkownik
 from .forms import CreateUserForm, SalaCreate,  OpiekunSaliCreate, RezerwacjaCreate,\
     RezerwacjaStanowiskaCreate, RodzajSaliCreate, RolaCreate, StanowiskoCreate, UzytkownikCreate
@@ -136,6 +137,47 @@ def registerPage(request):
 #     def get(self,request):
 #         user_list = services.check_user('')
 
+def add_event2(request):
+    events_all = Rezerwacja.objects.all()
+    title = request.GET.get("title", None)
+    start = request.GET.get("start", None)
+    end = request.GET.get("end", None)
+
+def test1(request):
+
+    return render(request,'app/about.html')
+
+def add_event(request):
+    #events_all = Rezerwacja.objects.all()
+    title = request.GET.get("title", None)
+    start = request.GET.get("start", None)
+    end = request.GET.get("end", None)
+
+    #user = Uzytkownik.objects.get(email=request.user.email)
+
+    #form = AddEventForm() 
+
+    #if request.method == 'POST':
+    #    form = AddEventForm(request.POST or None)
+    user = Uzytkownik()
+    user.id_uzytkownika=2
+
+    #    if form.is_valid():
+    event = Rezerwacja.objects.create(
+                #id_rezerwacji = 47, # będzie się autoinkrementował ?
+                id_uzytkownika = user,
+                event_name=title,
+                #event_comment=form.cleaned_data['event_comment'],
+                #status=form.cleaned_data['status'],
+                start_date=start,
+                end_date=end,
+                czy_anulowana = False,
+                #calendar=form.cleaned_data['calendar'],
+                #added_by=user,
+            )
+    event.save()
+    data = {}
+    return JsonResponse(data)
 
 def sale(request):
    pracownia = Sala.objects.all()

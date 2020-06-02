@@ -63,6 +63,9 @@
     <Folder Include="app\static\app\fonts\material-design-iconic-font\css\" />
     <Folder Include="app\static\app\fonts\material-design-iconic-font\fonts\" />
     <Folder Include="app\static\app\fonts\muli\" />
+    <Folder Include="app\static\app\images\banery\" />
+    <Folder Include="app\static\app\images\pracownie\" />
+    <Folder Include="app\static\app\images\tlo\" />
     <Folder Include="app\static\app\register\" />
     <Folder Include="app\static\app\register\css\" />
     <Folder Include="app\static\app\register\fonts\" />
@@ -118,6 +121,9 @@
     <Folder Include="app\templates\app\" />
     <Folder Include="app\static\app\images\" />
     <Folder Include="app\templates\accounts\" />
+    <Folder Include="app\templates\app\subpages\" />
+    <Folder Include="app\templates\app\subpages\afterLogin\" />
+    <Folder Include="app\templates\app\subpages\beforeLogin\" />
     <Folder Include="DjangoWebProject1\" />
   </ItemGroup>
   <ItemGroup>
@@ -131,8 +137,18 @@
     <Content Include="app\static\app\fonts\muli\Muli-Bold.ttf" />
     <Content Include="app\static\app\fonts\muli\Muli-Regular.ttf" />
     <Content Include="app\static\app\fonts\muli\Muli-SemiBold.ttf" />
+    <Content Include="app\static\app\images\banery\mainbanner.jpg" />
+    <Content Include="app\static\app\images\banery\pracownia.jpg" />
     <Content Include="app\static\app\images\bg-registration-form-2.jpg" />
+    <Content Include="app\static\app\images\pracownie\3d.jpg" />
+    <Content Include="app\static\app\images\pracownie\ar-vr.jpg" />
+    <Content Include="app\static\app\images\pracownie\aula.jpg" />
+    <Content Include="app\static\app\images\pracownie\elektroniczna.jpg" />
+    <Content Include="app\static\app\images\pracownie\hi-end.jpg" />
+    <Content Include="app\static\app\images\pracownie\konferencyjna.jpg" />
+    <Content Include="app\static\app\images\pracownie\warsztat.jpg" />
     <Content Include="app\static\app\images\registration-form-2.jpg" />
+    <Content Include="app\static\app\images\tlo\logback.jpg" />
     <Content Include="app\static\app\register\css\main.css" />
     <Content Include="app\static\app\register\css\util.css" />
     <Content Include="app\static\app\register\fonts\font-awesome-4.7.0\css\font-awesome.css" />
@@ -493,9 +509,13 @@
     <Content Include="app\static\app\style\cal_list\main.min.css" />
     <Content Include="app\static\app\style\cal_timegrid\main.css" />
     <Content Include="app\static\app\style\cal_timegrid\main.min.css" />
+    <Content Include="app\static\app\style\galeriastyle.css" />
     <Content Include="app\static\app\style\index\main.css" />
     <Content Include="app\static\app\style\index\mainbannerstyle.css" />
+    <Content Include="app\static\app\style\loginstyle.css" />
+    <Content Include="app\static\app\style\styleLogin.css" />
     <Content Include="app\static\app\style\style_registration.css" />
+    <Content Include="app\static\app\style\subbannerstyle.css" />
     <Content Include="app\templates\accounts\register.html" />
     <Content Include="app\templates\app\addrezerwacje.html" />
     <Content Include="app\templates\app\adduzytkownik.html" />
@@ -532,6 +552,9 @@
     <Content Include="app\templates\app\rola.html" />
     <Content Include="app\templates\app\secondpage.html" />
     <Content Include="app\templates\app\stanowiska.html" />
+    <Content Include="app\templates\app\subpages\afterLogin\pracownie.html" />
+    <Content Include="app\templates\app\subpages\beforeLogin\pracownie.html" />
+    <Content Include="app\templates\app\subpages\login.html" />
     <Content Include="app\templates\app\wylogowano.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

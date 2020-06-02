@@ -1,10 +1,23 @@
-{% extends "app/layout.html" %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>
+var eventData;
+              
+                  eventData = {
+                     title: 'new',
+                     start: 'new',
+                     end: 'new',
+                   };
+                   console.log(eventData)
+    $.ajax({
+        url: '/calendar/add/',
+        type: "GET",
+        data: eventData,
+        success: function (jsonResponse) {
+            alert("Dodano zdarzenie")
+        },
+        error: function (jsonResponse) {
+            alert("cannot insert!")
+        }
+    });
 
-{% block content %}
-
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
-
-<p>Use this area to provide additional information.</p>
-
-{% endblock %}
+</script>

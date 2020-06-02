@@ -100,7 +100,7 @@ class Sala(models.Model):
     nazwa_sali = models.CharField(max_length=128)
     budynek = models.CharField(max_length=64, blank=True, null=True)
     opis_sali = models.TextField(blank=True, null=True)
-    zdjecie = models.ImageField(blank=True, null=True)
+    #zdjecie = models.ImageField(blank=True, null=True)
 
     class Meta:
         managed = True

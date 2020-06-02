@@ -66,7 +66,7 @@
                 locale: "pl",
 
                 timeFormat: 'H(:mm)',
-                //timeZone: 'Europe/Warsaw',
+                timeZone: 'local',
 
                 // height: 800,
                 // ascpectRatio: 0.5,
@@ -113,7 +113,7 @@
 
 
                  //EVENTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+    
         events: [
     {% for i in events %}
              {
@@ -123,23 +123,23 @@
               },
           {% endfor %}
         ],
+         
 
 
 
-
-                select: function(start, end, resource) {
+                /*select: function(start, end, resource) {
                var title = 'new';
                var eventData;
                if (title) {
                   eventData = {
                      title: title,
                      start: start,
-                     end: end,
+                     end: end
                    };
-                   
-                   $('#calendar').fullCalendar('renderEvent', eventData, true);
+                   console.log(eventData);
+                   //$('#calendar').fullCalendar('renderEvent', eventData, true);
                    $.ajax({
-                       url: '/calendar/',
+                       url: '/calendar/add/',
                        type: "GET",
                        data: eventData,
                      success: function(jsonResponse) {
@@ -150,28 +150,28 @@
                      }
                   });
                 }
-            },
-                /*select: function (info, start, end, jsEvent, view) {
+            },*/
+                select: function (info, start, end, jsEvent, view) {
                     var obj = {};
                     obj.title = prompt("Tytuł:");
-                    obj.start = moment(info.startStr).format("YYYY-MM-DD");
-                    obj.end = moment(info.endStr).format("YYYY-MM-DD");
-                    obj.allDay = true;
-                    obj.overlap = false;
+                    obj.start = moment(info.startStr).format("YYYY-MM-DD HH:mm");
+                    obj.end = moment(info.endStr).format("YYYY-MM-DD HH:mm");
+                    
+                    /*obj.overlap = false;
                     obj.rendering = 'background';
-                    obj.color = '#ff9f89';
-                    eventsArray.push(obj);
+                    obj.color = '#ff9f89';*/
+                    //eventsArray.push(obj);
                     console.log(obj);
                     $('#calendar').fullCalendar('renderEvent', obj, true);
                     if (obj.title != null) {
                         calendar.addEvent({
                             title: obj.title,
                             start: obj.start,
-                            overlap: obj.overlap,
-                            rendering: obj.rendering,
-                            color: obj.color,
+                            //overlap: obj.overlap,
+                            //rendering: obj.rendering,
+                            //color: obj.color,
                             end: obj.end,
-                            allDay: obj.allDay,
+                            
                         });
                     } else
                         alert('Nie podałeś tytułu!');
@@ -180,11 +180,12 @@
                      title: obj.title,
                      start: obj.start,
                      end: obj.end,
-                     allDay: true,
-                     csrfmiddlewaretoken:$('input[obj.title=csrfmiddlewaretoken]').val()
+                     //allDay: true,
+                     //csrfmiddlewaretoken:$('input[obj.title=csrfmiddlewaretoken]').val()
                   };
+                $('#calendar').fullCalendar('renderEvent', eventData, true);
                 $.ajax({
-                     url: '/calendar',
+                     url: '/calendar/add/',
                      type: "GET",
                      data: eventData,
                      success: function(jsonResponse) {
@@ -194,7 +195,7 @@
                         alert("cannot insert!")
                      }
                   });
-                },*/
+                },
                 // select: function (arg) {
                 //     var title = prompt('Podaj tytuł:');
                 //     if (title) {
@@ -212,8 +213,8 @@
             calendar.render();
     });
     </script>
-    <script>
-    </script>
+   
+
     <style>
         body {
     margin: 40px 10px;
