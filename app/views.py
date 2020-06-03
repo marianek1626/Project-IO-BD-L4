@@ -79,8 +79,8 @@ def loginPage(request):
 			#	return redirect('calendar')
 			user = authenticate(request, email=username, haslo=password)
 			print(user)
-			if not request.user.is_authenticated:
-			    return render(request, 'accounts/register.html')
+			#if not request.user.is_authenticated:
+			#    return render(request, 'accounts/register.html')
 			if user is not None:
 				 print('OKEJ')
 				 login(request, user)
@@ -94,7 +94,6 @@ def loginPage(request):
 def event(request):
     all_events = Rezerwacja.objects.all()
     get_event_types = Rezerwacja.objects.only('event_type')
-
     if request.GET:
         event_arr = []
         if request.GET.get('event_type') == "all":
@@ -161,7 +160,7 @@ def add_event(request):
     #    form = AddEventForm(request.POST or None)
     user = Uzytkownik()
     user.id_uzytkownika=2
-
+    
     #    if form.is_valid():
     event = Rezerwacja.objects.create(
                 #id_rezerwacji = 47, # będzie się autoinkrementował ?
