@@ -37,7 +37,7 @@ class OpiekunSali(models.Model):
     numer_telefonu = models.CharField(max_length=16, blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'opiekun_sali'
         verbose_name_plural = 'Opiekunowie Sali'
 
@@ -45,14 +45,14 @@ class OpiekunSali(models.Model):
 class Rezerwacja(models.Model):
     id_rezerwacji = models.AutoField(primary_key=True)
     id_uzytkownika = models.ForeignKey('Uzytkownik', models.DO_NOTHING, db_column='id_uzytkownika')
-    event_name = models.CharField(max_length=255, null=True, blank=True)
-    start_date = models.DateTimeField(null=True, blank=True)
-    end_date = models.DateTimeField(null=True, blank=True)
+    #event_name = models.CharField(max_length=255, null=True, blank=True)
+    #start_date = models.DateTimeField(null=True, blank=True)
+    #end_date = models.DateTimeField(null=True, blank=True)
     czy_anulowana = models.BooleanField()
-    event_type = models.CharField(max_length=10, null=True, blank=True)
+    #event_type = models.CharField(max_length=10, null=True, blank=True)
 
-    def __str__(self):
-        return str(self.event_name)
+    #def __str__(self):
+    #    return str(self.event_name)
 
     class Meta:
         managed = True
@@ -95,15 +95,14 @@ class Rola(models.Model):
 
 class Sala(models.Model):
     id_sali = models.AutoField(primary_key=True)
-    id_rodzaju_sali = models.ForeignKey(RodzajSali, models.DO_NOTHING, db_column='id_rodzaju_sali')
-    id_opiekuna = models.ForeignKey(OpiekunSali, models.DO_NOTHING, db_column='id_opiekuna', blank=True, null=True)
     nazwa_sali = models.CharField(max_length=128)
     budynek = models.CharField(max_length=64, blank=True, null=True)
     opis_sali = models.TextField(blank=True, null=True)
+    id_rodzaju_sali = models.ForeignKey(RodzajSali, models.DO_NOTHING, db_column='id_rodzaju_sali')
     #zdjecie = models.ImageField(blank=True, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'sala'
         verbose_name_plural = 'Sale'
 
@@ -121,7 +120,15 @@ class Stanowisko(models.Model):
         db_table = 'stanowisko'
         verbose_name_plural = 'Stanowiska'
 
+class SalaOpiekun(models.Model):
+    id_sala_opiekun = models.AutoField(primary_key=True)
+    id_sali = models.ForeignKey(Sala, models.DO_NOTHING, db_column='id_sali')
+    id_opiekuna_sali = models.ForeignKey(OpiekunSali, models.DO_NOTHING, db_column='id_opiekuna_sali')
 
+    class Meta:
+        managed = False
+        db_table = 'sala_opiekun'
+        verbose_name_plural = 'SalaOpiekun'
 
 class Uzytkownik(models.Model):
     id_uzytkownika = models.AutoField(primary_key=True)

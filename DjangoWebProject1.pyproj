@@ -513,6 +513,7 @@
     <Content Include="app\static\app\style\index\main.css" />
     <Content Include="app\static\app\style\index\mainbannerstyle.css" />
     <Content Include="app\static\app\style\loginstyle.css" />
+    <Content Include="app\static\app\style\stanowiska.css" />
     <Content Include="app\static\app\style\styleLogin.css" />
     <Content Include="app\static\app\style\style_registration.css" />
     <Content Include="app\static\app\style\subbannerstyle.css" />
@@ -554,6 +555,7 @@
     <Content Include="app\templates\app\stanowiska.html" />
     <Content Include="app\templates\app\subpages\afterLogin\pracownie.html" />
     <Content Include="app\templates\app\subpages\beforeLogin\pracownie.html" />
+    <Content Include="app\templates\app\subpages\beforeLogin\stanowiska.html" />
     <Content Include="app\templates\app\subpages\login.html" />
     <Content Include="app\templates\app\wylogowano.html" />
     <Content Include="requirements.txt" />

@@ -22,7 +22,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('homepage/', views.homepage, name='homepage'),
     path('calendar/add/', views.add_event, name='add_event'),
-    path('calendar/about/', views.test1, name='test1'),
+    #path('calendar/about/', views.test1, name='test1'),
     path('calendar/', views.event, name='calendar'),
     #path('app/', include('app.urls')),
     path('admin/', admin.site.urls),

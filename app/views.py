@@ -17,10 +17,24 @@ from .models import Sala, OpiekunSali, Rezerwacja, RezerwacjaStanowiska, RodzajS
 from .forms import CreateUserForm, SalaCreate,  OpiekunSaliCreate, RezerwacjaCreate,\
     RezerwacjaStanowiskaCreate, RodzajSaliCreate, RolaCreate, StanowiskoCreate, UzytkownikCreate
 import hashlib
+
+import datetime
+from django.utils.timezone import make_aware
+
+naive_datetime = datetime.datetime.now()
+naive_datetime.tzinfo  # None
+
+settings.TIME_ZONE  # 'UTC'
+aware_datetime = make_aware(naive_datetime)
+aware_datetime.tzinfo  # <UTC>
+
+from django.utils import timezone
+import pytz
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_protect
 @cache_page(60 * 15)
 @csrf_protect
+
 
 
 def homepage(request):
@@ -92,18 +106,18 @@ def loginPage(request):
 		return render(request, 'accounts/login.html', context)
 
 def event(request):
-    all_events = Rezerwacja.objects.all()
-    get_event_types = Rezerwacja.objects.only('event_type')
+    all_events = RezerwacjaStanowiska.objects.all()
+    #get_event_types = Rezerwacja.objects.only('event_type')
     if request.GET:
         event_arr = []
-        if request.GET.get('event_type') == "all":
-            all_events = Rezerwacja.objects.all()
-        else:
-            all_events = Rezerwacja.objects.filter(event_type__icontains=request.GET.get('event_type'))
+        #if request.GET.get('event_type') == "all":
+        #    all_events = Rezerwacja.objects.all()
+        #else:
+        #    all_events = Rezerwacja.objects.filter(event_type__icontains=request.GET.get('event_type'))
 
         for i in all_events:
             event_sub_arr = {}
-            event_sub_arr['title'] = i.event_name
+            #event_sub_arr['title'] = i.event_name
             start_date = datetime.strptime(str(i.start_date.date()), "%Y-%m-%dT%H:%M:%S").strftime("%Y-%m-%dT%H:%M:%S")
             end_date = datetime.strptime(str(i.end_date.date()), "%Y-%m-%dT%H:%M:%S").strftime("%Y-%m-%dT%H:%M:%S")
             event_sub_arr['start'] = start_date
@@ -113,10 +127,10 @@ def event(request):
 
     context = {
         "events": all_events,
-        "get_event_types": get_event_types,
+        #"get_event_types": get_event_types,
 
     }
-    return render(request, 'app/calendar.html', context)
+    return render(request, 'app/subpages/beforeLogin/stanowiska.html', context)
 
 def registerPage(request):
     form = CreateUserForm()
@@ -136,43 +150,43 @@ def registerPage(request):
 #     def get(self,request):
 #         user_list = services.check_user('')
 
-def add_event2(request):
-    events_all = Rezerwacja.objects.all()
-    title = request.GET.get("title", None)
-    start = request.GET.get("start", None)
-    end = request.GET.get("end", None)
+#def add_event2(request):
+#    events_all = Rezerwacja.objects.all()
+#    title = request.GET.get("title", None)
+#    start = request.GET.get("start", None)
+#    end = request.GET.get("end", None)
 
-def test1(request):
+#def test1(request):
 
-    return render(request,'app/about.html')
+#    return render(request,'app/about.html')
 
 def add_event(request):
     #events_all = Rezerwacja.objects.all()
     title = request.GET.get("title", None)
     start = request.GET.get("start", None)
     end = request.GET.get("end", None)
-
+    print(start)
+    print(end)
     #user = Uzytkownik.objects.get(email=request.user.email)
 
     #form = AddEventForm() 
-
+    
     #if request.method == 'POST':
     #    form = AddEventForm(request.POST or None)
-    user = Uzytkownik()
-    user.id_uzytkownika=2
-    
+    #user = Uzytkownik()
+    #user.id_uzytkownika=1
+    booking = Rezerwacja()
+    booking.id_rezerwacji=1
+    place = Stanowisko()
+    place.id_stanowiska=1
     #    if form.is_valid():
-    event = Rezerwacja.objects.create(
+    event = RezerwacjaStanowiska.objects.create(
                 #id_rezerwacji = 47, # będzie się autoinkrementował ?
-                id_uzytkownika = user,
-                event_name=title,
-                #event_comment=form.cleaned_data['event_comment'],
-                #status=form.cleaned_data['status'],
-                start_date=start,
-                end_date=end,
+                id_rezerwacji = booking,
+                id_stanowiska=place,
+                termin_rozpoczecia=start,
+                termin_zakonczenia=end,
                 czy_anulowana = False,
-                #calendar=form.cleaned_data['calendar'],
-                #added_by=user,
             )
     event.save()
     data = {}
@@ -195,7 +209,7 @@ def role(request):
 
 def stanowiska(request):
    stanowisko = Stanowisko.objects.all()
-   return render(request, 'app/stanowiska.html', {'stanowiska': stanowisko})
+   return render(request, 'app/subpages/beforeLogin/stanowiska.html', {'stanowiska': stanowisko})
 
 
 def rezerwacje(request):

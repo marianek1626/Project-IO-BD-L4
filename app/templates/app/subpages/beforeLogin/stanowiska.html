@@ -1,13 +1,18 @@
 ﻿<!DOCTYPE html>
-<html lang='pl'>
-
-<head>
-    <meta charset='utf-8' />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalendarz</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/subbannerstyle.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/stanowiska.css" %}"/>
 
-    <link href="{% static 'app/style/cal_core/main.min.css'%}" rel='stylesheet' />
+     
+
+
+      <link href="{% static 'app/style/cal_core/main.min.css'%}" rel='stylesheet' />
     <link href="{% static 'app/style/cal_daygrid/main.min.css'%}" rel='stylesheet' />
     <link rel="stylesheet" href="{% static 'app/style/cal_list/main.min.css'%}" />
     <link rel="stylesheet" href="{% static 'app/style/cal_timegrid/main.css'%}" />
@@ -32,10 +37,9 @@
     <script src="{% static 'app/scripts/cal_luxon/main.js'%}"></script>
     <script src="{% static 'app/scripts/cal_moment-timezone/main.js'%}"></script>
     <script src="{% static 'app/scripts/cal_rrule/main.js'%}"></script>
-   
-    
-    
-    <script>
+
+
+      <script>
      
     document.addEventListener('DOMContentLoaded', function () {
        var calendarEl = document.getElementById('calendar');
@@ -55,7 +59,7 @@
                 selectMirror: true,
                 selectHelper: true,
                 editable: true,
-                businessHours: true,
+                businessHours: false,
                 eventLimit: true,
                 navLinks: true,
                 nowIndicator: true,
@@ -67,7 +71,7 @@
 
                 timeFormat: 'H(:mm)',
                 timeZone: 'local',
-
+                eventOverlap: false,
                 // height: 800,
                 // ascpectRatio: 0.5,
                 titleFormat: { // will produce something like "Tuesday, September 18, 2018"
@@ -157,17 +161,17 @@
                     obj.start = moment(info.startStr).format("YYYY-MM-DD HH:mm");
                     obj.end = moment(info.endStr).format("YYYY-MM-DD HH:mm");
                     
-                    /*obj.overlap = false;
-                    obj.rendering = 'background';
+                    //obj.overlap = true;
+                    /*obj.rendering = 'background';
                     obj.color = '#ff9f89';*/
                     //eventsArray.push(obj);
                     console.log(obj);
                     $('#calendar').fullCalendar('renderEvent', obj, true);
-                   
+                   editable: true,
                         calendar.addEvent({
                             title: obj.title,
                             start: obj.start,
-                            //overlap: obj.overlap,
+                            
                             //rendering: obj.rendering,
                             //color: obj.color,
                             end: obj.end,
@@ -196,6 +200,7 @@
                      }
                   });
                 },
+          
                 // select: function (arg) {
                 //     var title = prompt('Podaj tytuł:');
                 //     if (title) {
@@ -213,27 +218,102 @@
             calendar.render();
     });
     </script>
-   
 
-    <style>
+      <style>
         body {
     margin: 40px 10px;
     padding: 0;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
+    position: relative;
   }
 
   #calendar {
     max-width: 900px;
     margin: 0 auto;
+    position: absolute;
+    top: 450px;
+    right: 10px;
   }
     </style>
-</head>
 
-<body>
 
-    <div id='calendar'></div>
 
-</body>
+  </head>
+  
 
+  <body>
+    <nav class="lognav">
+      <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
+      <ul class="loglist">
+        <li><a href="{% url 'login' %}" class="reglog">Zaloguj</a></li>
+      </ul>
+    </nav>
+    <div class="banner">
+      <div class="container">
+        <div class="banner-content">
+          <h1>Warsztat</h1>
+        </div>
+      </div>
+      </div>
+ <div id='calendar'></div>
+    <div class="workshops">
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/warsztat.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/warsztat.jpg" %}" alt="warsztat"
+          /></a>
+          <div class="des">Piła ukosowa</div>
+          <input type="checkbox" name="pila_ukosowa" value="pila_ukosowa" /> 
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/ar-vr.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/ar-vr.jpg" %}" alt="ar-vr"
+          /></a>
+          <div class="des">Wiertarka Stołowa</div>
+            <input id="reload" type="checkbox" name="wiert_stol" value="wiert_stol" /> 
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/3d.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/3d.jpg" %}" alt="3d"
+          /></a>
+          <div class="des">Szlifierka</div>
+            <input type="checkbox" name="szlifierka" value="szlifierka" /> 
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/hi-end.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/hi-end.jpg" %}" alt="hi-end"
+          /></a>
+          <div class="des">Frezarka górnowrzecinowa</div>
+            <input type="checkbox" name="frezarka" value="frezarka" /> 
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/aula.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/pracownie/aula.jpg" %}" alt="aula"
+          /></a>
+          <div class="des">Przecinarka do metalu</div>
+            <input type="checkbox" name="przecin_metal" value="przecin_metal" /> 
+        </div>
+      </div>
+      <div class="responsive">
+        <div class="gallery">
+          <a href="{% static "app/images/pracownie/elektroniczna.jpg" %}" target="_blank"
+            ><img
+              src="{% static "app/images/pracownie/elektroniczna.jpg" %}"
+              alt="elektroniczna"
+          /></a>
+          <div class="des">Majsterkowicz</div>
+<input type="checkbox" name="majster" value="majster" /> 
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

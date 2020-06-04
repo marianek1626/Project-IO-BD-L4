@@ -10,7 +10,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-from .models import Sala, OpiekunSali, Rezerwacja, RezerwacjaStanowiska, RodzajSali, Rola, Stanowisko, Uzytkownik
+from .models import Sala,SalaOpiekun, OpiekunSali, Rezerwacja, RezerwacjaStanowiska, RodzajSali, Rola, Stanowisko, Uzytkownik
 from django import forms
 
 #class BootstrapAuthenticationForm(AuthenticationForm):
@@ -77,4 +77,10 @@ class RezerwacjaStanowiskaCreate(forms.ModelForm):
 
     class Meta:
         model = RezerwacjaStanowiska
+        fields = '__all__'
+
+class SalaOpiekunCreate(forms.ModelForm):
+
+    class Meta:
+        model = SalaOpiekun
         fields = '__all__'

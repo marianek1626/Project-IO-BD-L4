@@ -83,6 +83,9 @@ DATABASES = {
     'default': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'OPTIONS': {
+        #    'timeout': 20,
+        #    }
    'ENGINE': 'django.db.backends.postgresql_psycopg2',
      'NAME': 'ddie41g4csvk5l',
       'USER': 'eujzgehdpfaerj',
@@ -115,7 +118,7 @@ LANGUAGE_CODE = 'pl'
 TIME_ZONE = 'Europe/Warsaw'
 USE_I18N = True
 USE_L10N = True
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
