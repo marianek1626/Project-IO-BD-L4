@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
-    <title>Document</title>
+    <title>Stanowiska</title>
     <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
     <link rel="stylesheet" href="{% static "app/style/subbannerstyle.css" %}" />
-    <link rel="stylesheet" href="{% static "app/style/stanowiska.css" %}"/>
+    <link rel="stylesheet" href="{% static "app/style/galeriastyletwo.css" %}"/>
 
      
 
@@ -117,8 +117,7 @@
 
 
                  //EVENTS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
-        events: [
+   events: [
     {% for i in events %}
              {
  
@@ -126,7 +125,8 @@
                   end: '{{ i.termin_zakonczenia|date:"Y-m-d" }}T{{ i.termin_zakonczenia|time:"H:i" }}',
               },
           {% endfor %}
-        ],
+        ],   
+      
          
 
 
@@ -155,12 +155,12 @@
                   });
                 }
             },*/
-                select: function (info, start, end, jsEvent, view) {
+                select: function (info, start, end, jsEvent, view, resource) {
                     var obj = {};
 //                    obj.title = prompt("Tytuł:");
                     obj.start = moment(info.startStr).format("YYYY-MM-DD HH:mm");
                     obj.end = moment(info.endStr).format("YYYY-MM-DD HH:mm");
-                    
+                    //obj.resourceId = selectionInfo.resource.id;
                     //obj.overlap = true;
                     /*obj.rendering = 'background';
                     obj.color = '#ff9f89';*/
@@ -169,9 +169,9 @@
                     $('#calendar').fullCalendar('renderEvent', obj, true);
                    editable: true,
                         calendar.addEvent({
-                            title: obj.title,
+                            //title: obj.title,
                             start: obj.start,
-                            
+                            //resourceId: obj.resourceId,
                             //rendering: obj.rendering,
                             //color: obj.color,
                             end: obj.end,
@@ -199,6 +199,7 @@
                         alert("cannot insert!")
                      }
                   });
+          $("#calendar").fullCalendar('unselect');
                 },
           
                 // select: function (arg) {
@@ -221,10 +222,10 @@
 
       <style>
         body {
-    margin: 40px 10px;
-    padding: 0;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-    font-size: 14px;
+    /*margin: 40px 10px;
+    padding: 0;*/
+    /*font-family: Arial, Helvetica Neue, Helvetica, sans-serif;*/
+    /*font-size: 14px;*/
     position: relative;
   }
 
@@ -233,8 +234,14 @@
     margin: 0 auto;
     position: absolute;
     top: 450px;
-    right: 10px;
+    right: 10%;
+    left: 50%;
   }
+
+  .banner {
+        background-image: url(../../../../static/app/images/banery/warsztatbanner.jpg);
+      }
+
     </style>
 
 
@@ -260,8 +267,8 @@
     <div class="workshops">
       <div class="responsive">
         <div class="gallery">
-          <a href="{% static "app/images/pracownie/warsztat.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/pracownie/warsztat.jpg" %}" alt="warsztat"
+          <a href="{% static "app/images/stanowiska/pila-ukosowa.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/stanowiska/pila-ukosowa.jpg" %}" alt="warsztat"
           /></a>
           <div class="des">Piła ukosowa</div>
           <input type="checkbox" name="pila_ukosowa" value="pila_ukosowa" /> 
@@ -269,8 +276,8 @@
       </div>
       <div class="responsive">
         <div class="gallery">
-          <a href="{% static "app/images/pracownie/ar-vr.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/pracownie/ar-vr.jpg" %}" alt="ar-vr"
+          <a href="{% static "app/images/stanowiska/wiertarka-stolowa.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/stanowiska/wiertarka-stolowa.jpg" %}" alt="ar-vr"
           /></a>
           <div class="des">Wiertarka Stołowa</div>
             <input id="reload" type="checkbox" name="wiert_stol" value="wiert_stol" /> 
@@ -278,17 +285,17 @@
       </div>
       <div class="responsive">
         <div class="gallery">
-          <a href="{% static "app/images/pracownie/3d.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/pracownie/3d.jpg" %}" alt="3d"
+          <a href="{% static "app/images/stanowiska/mini-szlifierka.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/stanowiska/mini-szlifierka.jpg" %}" alt="3d"
           /></a>
-          <div class="des">Szlifierka</div>
+          <div class="des">Mini szlifierka</div>
             <input type="checkbox" name="szlifierka" value="szlifierka" /> 
         </div>
       </div>
       <div class="responsive">
         <div class="gallery">
-          <a href="{% static "app/images/pracownie/hi-end.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/pracownie/hi-end.jpg" %}" alt="hi-end"
+          <a href="{% static "app/images/stanowiska/frezarka-gornowrzecionowa.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/stanowiska/frezarka-gornowrzecionowa.jpg" %}" alt="hi-end"
           /></a>
           <div class="des">Frezarka górnowrzecinowa</div>
             <input type="checkbox" name="frezarka" value="frezarka" /> 
@@ -296,8 +303,8 @@
       </div>
       <div class="responsive">
         <div class="gallery">
-          <a href="{% static "app/images/pracownie/aula.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/pracownie/aula.jpg" %}" alt="aula"
+          <a href="{% static "app/images/stanowiska/przecinarka-do-metalu.jpg" %}" target="_blank"
+            ><img src="{% static "app/images/stanowiska/przecinarka-do-metalu.jpg" %}" alt="aula"
           /></a>
           <div class="des">Przecinarka do metalu</div>
             <input type="checkbox" name="przecin_metal" value="przecin_metal" /> 
@@ -305,12 +312,12 @@
       </div>
       <div class="responsive">
         <div class="gallery">
-          <a href="{% static "app/images/pracownie/elektroniczna.jpg" %}" target="_blank"
+          <a href="{% static "app/images/stanowiska/majsterkowicz-rzemieslnik.jpg" %}" target="_blank"
             ><img
-              src="{% static "app/images/pracownie/elektroniczna.jpg" %}"
+              src="{% static "app/images/stanowiska/majsterkowicz-rzemieslnik.jpg" %}"
               alt="elektroniczna"
           /></a>
-          <div class="des">Majsterkowicz</div>
+          <div class="des">Majsterkowicz, rzemieślnik</div>
 <input type="checkbox" name="majster" value="majster" /> 
         </div>
       </div>

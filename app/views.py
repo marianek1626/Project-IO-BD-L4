@@ -98,7 +98,7 @@ def loginPage(request):
 			if user is not None:
 				 print('OKEJ')
 				 login(request, user)
-				 return redirect('calendar')
+				 return redirect('sale')
 			else:
 				messages.info(request, 'Username OR password is incorrect')
 

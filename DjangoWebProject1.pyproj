@@ -65,6 +65,7 @@
     <Folder Include="app\static\app\fonts\muli\" />
     <Folder Include="app\static\app\images\banery\" />
     <Folder Include="app\static\app\images\pracownie\" />
+    <Folder Include="app\static\app\images\stanowiska\" />
     <Folder Include="app\static\app\images\tlo\" />
     <Folder Include="app\static\app\register\" />
     <Folder Include="app\static\app\register\css\" />
@@ -139,6 +140,7 @@
     <Content Include="app\static\app\fonts\muli\Muli-SemiBold.ttf" />
     <Content Include="app\static\app\images\banery\mainbanner.jpg" />
     <Content Include="app\static\app\images\banery\pracownia.jpg" />
+    <Content Include="app\static\app\images\banery\warsztatbanner.jpg" />
     <Content Include="app\static\app\images\bg-registration-form-2.jpg" />
     <Content Include="app\static\app\images\pracownie\3d.jpg" />
     <Content Include="app\static\app\images\pracownie\ar-vr.jpg" />
@@ -148,6 +150,12 @@
     <Content Include="app\static\app\images\pracownie\konferencyjna.jpg" />
     <Content Include="app\static\app\images\pracownie\warsztat.jpg" />
     <Content Include="app\static\app\images\registration-form-2.jpg" />
+    <Content Include="app\static\app\images\stanowiska\frezarka-gornowrzecionowa.jpg" />
+    <Content Include="app\static\app\images\stanowiska\majsterkowicz-rzemieslnik.jpg" />
+    <Content Include="app\static\app\images\stanowiska\mini-szlifierka.jpg" />
+    <Content Include="app\static\app\images\stanowiska\pila-ukosowa.jpg" />
+    <Content Include="app\static\app\images\stanowiska\przecinarka-do-metalu.jpg" />
+    <Content Include="app\static\app\images\stanowiska\wiertarka-stolowa.jpg" />
     <Content Include="app\static\app\images\tlo\logback.jpg" />
     <Content Include="app\static\app\register\css\main.css" />
     <Content Include="app\static\app\register\css\util.css" />
@@ -510,6 +518,7 @@
     <Content Include="app\static\app\style\cal_timegrid\main.css" />
     <Content Include="app\static\app\style\cal_timegrid\main.min.css" />
     <Content Include="app\static\app\style\galeriastyle.css" />
+    <Content Include="app\static\app\style\galeriastyletwo.css" />
     <Content Include="app\static\app\style\index\main.css" />
     <Content Include="app\static\app\style\index\mainbannerstyle.css" />
     <Content Include="app\static\app\style\loginstyle.css" />
@@ -517,6 +526,7 @@
     <Content Include="app\static\app\style\styleLogin.css" />
     <Content Include="app\static\app\style\style_registration.css" />
     <Content Include="app\static\app\style\subbannerstyle.css" />
+    <Content Include="app\static\app\style\subbannerstyletwo.css" />
     <Content Include="app\templates\accounts\register.html" />
     <Content Include="app\templates\app\addrezerwacje.html" />
     <Content Include="app\templates\app\adduzytkownik.html" />
