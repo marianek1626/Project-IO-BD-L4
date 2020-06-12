@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+        <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/adminpage/adminstyle.css" %}" />
+</head>
+<body>
+    <nav class="lognav">
+        <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
+        <label class="logo"> <a href="{% url 'adminpage' %}"> Panel Administratora</a></label>
+    </nav>
+        <div class="banner">
+            <div class="container">
+                <div class="banner-content">
+                    <form method = 'POST' enctype="multipart/form-data">
+                       {% csrf_token %}
+                <center>
+                   <table>
+                      {% for nowy in nowyopiekun %}
+                         <tr>
+                             <th>{{nowy.label}}</th>
+                              <td>{{ nowy }}</td>
+                         </tr>
+                      {% endfor %}
+                   </table>
+                 </center>
+                    <br />
+                    <button type="submit" class="btn-one">Zapisz</button>
+                     </form>
+
+                </div>
+            </div>
+        </div>
+</body>
+</html>

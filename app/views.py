@@ -69,6 +69,7 @@ def loginPage(request):
 	#if request.user.is_authenticated:
 	#	return redirect('login')
 	#else:
+		global x
 		if request.method == 'POST':
 
 			url = 'https://fakepci.herokuapp.com/login'
@@ -96,6 +97,7 @@ def loginPage(request):
 			#if not request.user.is_authenticated:
 			#    return render(request, 'accounts/register.html')
 			if user is not None:
+				 x = user.id_uzytkownika
 				 print('OKEJ')
 				 login(request, user)
 				 return redirect('sale')
@@ -146,20 +148,6 @@ def registerPage(request):
     context={'form':form}
     return render(request,'accounts/register.html',context)
 
-#class loginPage1(generic.TemplateView):
-#     def get(self,request):
-#         user_list = services.check_user('')
-
-#def add_event2(request):
-#    events_all = Rezerwacja.objects.all()
-#    title = request.GET.get("title", None)
-#    start = request.GET.get("start", None)
-#    end = request.GET.get("end", None)
-
-#def test1(request):
-
-#    return render(request,'app/about.html')
-
 def add_event(request):
     #events_all = Rezerwacja.objects.all()
     title = request.GET.get("title", None)
@@ -188,7 +176,13 @@ def add_event(request):
                 termin_zakonczenia=end,
                 czy_anulowana = False,
             )
+    print(x)
+    #event1 = Rezerwacja.objects.create(
+        #id_uzytkownika = x,
+        #czy_anulowana = False
+        #)
     event.save()
+    #event1.save()
     data = {}
     return JsonResponse(data)
 
@@ -196,7 +190,8 @@ def sale(request):
    pracownia = Sala.objects.all()
    #sale_list = serializers.serialize('json', sale)
     #return HttpResponse(sale_list, content_type="text/json-comment-filtered")
-   return render(request, 'app/subpages/beforeLogin/pracownie.html', {'pracownie': pracownia})
+   return render(request, 'app/subpages/afterLogin/pracownie.html', {'pracownie': pracownia})
+
 
 # return render(request, 'pracownie.html', {'pracownie': pracownia})
 # sale_list = list(sale)  # important: convert the QuerySet to a list object
@@ -211,10 +206,16 @@ def stanowiska(request):
    stanowisko = Stanowisko.objects.all()
    return render(request, 'app/subpages/beforeLogin/stanowiska.html', {'stanowiska': stanowisko})
 
+x=1
 
 def rezerwacje(request):
    rezerwacja = Rezerwacja.objects.all()
    return render(request, 'app/rezerwacje.html', {'rezerwacje': rezerwacja})
+
+def rezerwacjestanowiska(request):
+    rezerwacjestanowiska = RezerwacjaStanowiska.objects.all()
+    user = Uzytkownik.objects.filter(id_uzytkownika=x)
+    return render(request, 'app/rezerwacje.html', {'rezerwacjestanowiska': rezerwacjestanowiska, 'user':user})
 
 
 def createrezerwacje(request):

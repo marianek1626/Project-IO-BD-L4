@@ -6,26 +6,7 @@ from django.db import models
 from django.contrib.auth.models import update_last_login
 from django.contrib.auth.signals import user_logged_in
 from django.contrib.auth.models import PermissionsMixin
-# Create your models here.
-
-#class users(models.Model):
-#    active=models.IntegerField()
-#    email=models.CharField(max_length=30)
-#    password=models.CharField(max_length=30)
-#    name=models.CharField(max_length=10)
-#    lastname=models.CharField(max_length=10)
-    
-
-#    def _str_(self):
-#        return self.firstname
-
-#def update_last_login(sender, user, **kwargs):
-#    """
-#    A signal receiver which updates the last_login date for
-#    the user logging in.
-#    """
-#    user.last_login = timezone.now()
-#    user.save(update_fields=['last_login'])
+from django.core.validators import MaxValueValidator, MinValueValidator
 user_logged_in.disconnect(update_last_login, dispatch_uid='update_last_login')
 
 
@@ -40,19 +21,17 @@ class OpiekunSali(models.Model):
         managed = False
         db_table = 'opiekun_sali'
         verbose_name_plural = 'Opiekunowie Sali'
+    def __str__(self):
+        dane=self.imie + " " + self.nazwisko
+        return dane
+        
 
 
 class Rezerwacja(models.Model):
     id_rezerwacji = models.AutoField(primary_key=True)
     id_uzytkownika = models.ForeignKey('Uzytkownik', models.DO_NOTHING, db_column='id_uzytkownika')
-    #event_name = models.CharField(max_length=255, null=True, blank=True)
-    #start_date = models.DateTimeField(null=True, blank=True)
-    #end_date = models.DateTimeField(null=True, blank=True)
     czy_anulowana = models.BooleanField()
-    #event_type = models.CharField(max_length=10, null=True, blank=True)
 
-    #def __str__(self):
-    #    return str(self.event_name)
 
     class Meta:
         managed = True
@@ -73,7 +52,11 @@ class RezerwacjaStanowiska(models.Model):
         managed = True
         db_table = 'rezerwacja_stanowiska'
         verbose_name_plural = 'Rezerwacje Stanowiska'
-
+    def anuluj(self):
+        if self.czy_anulowana==False:
+            return "Nie"
+        else:
+            return "Tak"
 
 class RodzajSali(models.Model):
     id_rodzaju_sali = models.AutoField(primary_key=True)
@@ -83,6 +66,8 @@ class RodzajSali(models.Model):
         managed = True
         db_table = 'rodzaj_sali'
         verbose_name_plural = 'Rodzaje Sali'
+    def __str__(self):
+        return self.rodzaj
 
 class Rola(models.Model):
     id_roli = models.AutoField(primary_key=True)
@@ -92,6 +77,8 @@ class Rola(models.Model):
         managed = True
         db_table = 'rola'
         verbose_name_plural = 'Role'
+    def __str__(self):
+        return self.nazwa_roli
 
 class Sala(models.Model):
     id_sali = models.AutoField(primary_key=True)
@@ -99,26 +86,37 @@ class Sala(models.Model):
     budynek = models.CharField(max_length=64, blank=True, null=True)
     opis_sali = models.TextField(blank=True, null=True)
     id_rodzaju_sali = models.ForeignKey(RodzajSali, models.DO_NOTHING, db_column='id_rodzaju_sali')
-    #zdjecie = models.ImageField(blank=True, null=True)
+
 
     class Meta:
         managed = False
         db_table = 'sala'
         verbose_name_plural = 'Sale'
+    def __str__(self):
+        return self.nazwa_sali
 
 class Stanowisko(models.Model):
     id_stanowiska = models.AutoField(primary_key=True)
     id_sali = models.ForeignKey(Sala, models.DO_NOTHING, db_column='id_sali')
     nazwa_stanowiska = models.CharField(max_length=128)
     opis_stanowiska = models.TextField(blank=True, null=True)
-    stopien_zaawansowania = models.IntegerField()
+    stopien_zaawansowania = models.IntegerField(("Stopień zaawansowania (1-10)"),
+        default=1,
+        validators=[MaxValueValidator(10), MinValueValidator(1)] )
     czy_dostepne = models.BooleanField()
-    #zdjecie = models.ImageField(blank=True, null=True)
+    id_sali = models.ForeignKey(Sala, models.CASCADE, db_column='id_sali')
 
     class Meta:
         managed = True
         db_table = 'stanowisko'
         verbose_name_plural = 'Stanowiska'
+    def status(self):
+        if self.czy_dostepne==False:
+            return "Nie"
+        else:
+            return "Tak"
+    def __str__(self):
+        return self.nazwa_stanowiska
 
 class SalaOpiekun(models.Model):
     id_sala_opiekun = models.AutoField(primary_key=True)
@@ -139,8 +137,12 @@ class Uzytkownik(models.Model):
     haslo = models.CharField(max_length=128)
 
     is_superuser = models.IntegerField(default=False)
-    #last_login = models.DateTimeField(('last login'), default=timezone.now)
     is_staff = models.BooleanField(('staff status'),default=False)
+
+    def __str__(self):
+        dane=self.imie + " " + self.nazwisko
+        return dane
+
 
     def is_active(self):
      return True

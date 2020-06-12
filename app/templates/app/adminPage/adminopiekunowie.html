@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/adminpage/adminstyle.css" %}" />
+</head>
+  <body>
+      <nav class="lognav">
+          <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
+          <label class="logo"> <a href="{% url 'adminpage' %}"> Panel Administratora</a></label>
+      </nav>
+    <section><div class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <br />
+                <tr>
+                    <a href="{% url 'adminuzytkownicy' %}" class="btn-one">Użytkownicy</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminrezerwacje' %}" class="btn-one">Rezerwacje</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminsale' %}" class="btn-one">Sale</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminstanowiska' %}" class="btn-one">Stanowiska</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminopiekunowie' %}" class="btn-one">Opiekunowie</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'przydzialy' %}" class="btn-one">Przydziały</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'admin:index' %}" target="_blank" class="btn-one">Administracja Django</a>
+                </tr>
+                <br /><br />
+                <h1>Opiekunowie</h1>
+                <br />
+                <tr>
+                    <a href="{% url 'nowyopiekun' %}" class="btn-one">Dodaj opiekuna</a>
+                </tr>
+                <br /><br />
+                    <table style="width:40%; margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>E-mail</th>
+                            <th>Numer Telefonu</th>
+                         </tr>
+                        {% block content %}
+                        {% for opiekun in opiekunowie %}
+                         <tr>
+                             <td>{{opiekun.imie}}</td>
+                             <td>{{opiekun.nazwisko}}</td>
+                             <td>{{opiekun.email}}</td>
+                             <td>{{opiekun.numer_telefonu}}</td>
+                             <td><button><a href="opiekun_delete/{{opiekun.id_opiekuna}}" class="btn btn-danger">Usuń</a></button></td>
+                             <td><button><a href="opiekun_update/{{opiekun.id_opiekuna}}" class="btn btn-warning">Edytuj</a></button></td>
+                         </tr>
+                        {% endfor %}
+                        {% endblock %}
+                    </table>
+            </div>
+        </div>
+        </div>
+        </section>
+  </body>
+</html>

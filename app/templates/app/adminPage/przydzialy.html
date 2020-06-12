@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/adminpage/adminstyle.css" %}" />
+</head>
+  <body>
+      <nav class="lognav">
+          <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
+          <label class="logo"> <a href="{% url 'adminpage' %}"> Panel Administratora</a></label>
+      </nav>
+    <section><div class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <br />
+                <tr>
+                    <a href="{% url 'adminuzytkownicy' %}" class="btn-one">Użytkownicy</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminrezerwacje' %}" class="btn-one">Rezerwacje</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminsale' %}" class="btn-one">Sale</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminstanowiska' %}" class="btn-one">Stanowiska</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'adminopiekunowie' %}" class="btn-one">Opiekunowie</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'przydzialy' %}" class="btn-one">Przydziały</a>
+                </tr>
+                <tr>
+                    <a href="{% url 'admin:index' %}" target="_blank" class="btn-one">Administracja Django</a>
+                </tr>
+                <br /><br />
+                <h1>Przydziały opiekunów do sal</h1>
+                <br />
+                <tr>
+                    <a href="{% url 'nowyprzydzial' %}" class="btn-one">Dodaj przydział</a>
+                </tr>
+                <br /><br />
+                    <table style="width:40%; margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>Sala</th>
+                            <th>Opiekun</th>
+                         </tr>
+                        {% block content %}
+                        {% for przydzial in przydzialy %}
+                         <tr>
+                             <td>{{przydzial.id_sali}}</td>
+                             <td>{{przydzial.id_opiekuna_sali}}</td>
+                             <td><button><a href="przydzial_delete/{{przydzial.id_sala_opiekun}}" class="btn btn-danger">Usuń</a></button></td>
+                         </tr>
+                        {% endfor %}
+                        {% endblock %}
+                    </table>
+            </div>
+        </div>
+        </div>
+        </section>
+  </body>
+</html>

@@ -9,25 +9,65 @@
         margin-right: auto;
         text-align: center;
         width: 1000px;
-        background-color: cyan;
+        background-color: white;
         }
+    #table, th, td {
+        border: 1px solid black;
+        background-color:#021625;
+
+}
      </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+     <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
+    <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
 </head>
 <body>
+
 <div id="szablon">
-<h1>Rezerwacje</h1>
-   <br/><br/>
-    <h3>Rezerwacja1 </h3>
-    <h3>Rezerwacja2</h3>
+
+<section><div class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h1>Twoje rezerwacje</h1>
+            </div>
 <h2>
-    <a href="% url 'update_rezerwacje' rezerwacje.id %}">
-        <li> rezerwacja.description </li>
-    </a>
     <br/><br/>
-    <a href="% url 'create_rezerwacje' %}">Nowa rezerwacja</a>
+
+ {% for u in user %}
+    <table style="width:40%; margin-left:auto;margin-right:auto;">
+        <tr>
+
+ <td>Użytkownik numer: {{u.id_uzytkownika}}</td>
+</table>
+     <table style="width:40%; margin-left:auto;margin-right:auto;">
+                        <tr>
+                            <th>Rezerwujący</th>
+                            <th>Stanowisko</th>
+                            <th>Termin rozpoczęcia</th>
+                            <th>Termin zakończenia</th>
+                            <th>Czy anulowana</th>
+                         </tr>
+                        {% block content %}
+{% for rezerwacja in rezerwacjestanowiska %}
+ {% if rezerwacja.id_rezerwacji.id_uzytkownika.id_uzytkownika == u.id_uzytkownika %}
+         <tr>
+    <td>{{rezerwacja.id_rezerwacji.id_uzytkownika.imie}} {{rezerwacja.id_rezerwacji.id_uzytkownika.nazwisko}}</td>
+    <td>{{rezerwacja.id_stanowiska.id_sali.nazwa_sali}}: {{rezerwacja.id_stanowiska.nazwa_stanowiska}}</td>
+    <td>{{rezerwacja.termin_rozpoczecia}}</td>
+    <td>{{rezerwacja.termin_zakonczenia}}</td>
+    <td>{{rezerwacja.czy_anulowana}}</td>
+     </tr>
+         {% endif %}
+{% endfor %}
+ {% endblock %}
+         {% endfor %}
+       </table>
+     <div class="banner-content">
+                <a href="{% url 'calendar' %}" class="btn-one">Kaledarz</a>
+     </div>
     <br/><br/>
-        <a href="index.html"  style="background-color:chartreuse;">Strona główna</a>
-        <br/><br/>
     </h2>
 </div>
 
