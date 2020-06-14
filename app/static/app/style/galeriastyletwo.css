@@ -1,119 +1,140 @@
 .workshops {
-  width: 50%;
-  height: 50vh;
+    width: 30%;
+    margin: 0 auto;
 }
 
 .gallery {
-  border: 1px solid #ccc;
+    border: 1px solid #ccc;
 }
 
-.gallery a img {
-  width: 100%;
-  height: 150px;
-}
+    .gallery img {
+        width: 100%;
+        height: 150px;
+    }
 
 .des {
-  padding: 15px;
-  font-size: 16px;
-  text-align: center;
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
 }
 
 .responsive {
-  padding: 6px 6px;
-  float: left;
-  width: 50%;
+    padding: 6px 6px;
+    float: left;
+    width: 50%;
+    cursor: pointer;
 }
 
+    .responsive:hover,
+    .responsive:focus {
+        outline: 1px solid rgb(10, 10, 155);
+    }
+
 @media (max-width: 400px) {
-  .workshops {
-    width: 80%;
-  }
-  .responsive {
-    width: 100%;
-    margin: 6px 0;
-  }
+    .workshops {
+        width: 80%;
+    }
+
+    .responsive {
+        width: 100%;
+        margin: 6px 0;
+    }
 }
 
 @media (max-width: 500px) {
-  .workshops {
-    width: 70%;
-    margin: 0 auto;
-  }
-  .responsive {
-    width: 100%;
-    margin: 6px 0;
-  }
+    .workshops {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .responsive {
+        width: 100%;
+        margin: 6px 0;
+    }
 }
 
 @media (min-width: 768px) {
-  .workshops {
-    width: 50%;
-  }
-  .responsive {
-    width: 50%;
-    margin: 6px 0;
-  }
+    .workshops {
+        width: 80%;
+    }
+
+    .responsive {
+        width: 32%;
+        margin: 6px 0;
+    }
 }
 
 @media (min-width: 1000px) {
-  .gallery a img {
-    height: 195px;
-  }
+    .workshops {
+        width: 35%;
+        margin: 0 0;
+    }
 
-  .des {
-    padding: 19.5px;
-    font-size: 17px;
-  }
+    .responsive {
+        width: 50%;
+        margin: 6px 0;
+    }
+
+    .gallery img {
+        height: 150px;
+    }
+
+    .des {
+        padding: 15px;
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 1400px) {
-  .workshops {
-    width: 50%;
-  }
-  .responsive {
-    width: 50%;
-    margin: 8.5px 0;
-  }
+    .workshops {
+        width: 35%;
+    }
 
-  .gallery a img {
-    height: 275px;
-  }
+    .responsive {
+        width: 50%;
+        margin: 7px 0;
+    }
 
-  .des {
-    padding: 27px;
-    font-size: 20px;
-  }
+    .gallery img {
+        height: 175px;
+    }
+
+    .des {
+        padding: 17px;
+        font-size: 18px;
+    }
 }
 
 @media (min-width: 1900px) {
-  .responsive {
-    margin: 12px 0;
-  }
+    .responsive {
+        margin: 8px 0;
+    }
 
-  .gallery a img {
-    height: 385px;
-  }
+    .gallery img {
+        height: 200px;
+    }
 
-  .des {
-    padding: 37px;
-    font-size: 25px;
-  }
+    .des {
+        padding: 19px;
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 2500px) {
-  .workshops {
-    width: 40%;
-  }
-  .responsive {
-    margin: 17px 0;
-  }
+    .workshops {
+        width: 35%;
+    }
 
-  .gallery a img {
-    height: 340px;
-  }
+    .responsive {
+        margin: 10px 0;
+    }
 
-  .des {
-    padding: 52px;
-    font-size: 32px;
-  }
+    .gallery img {
+        height: 285px;
+    }
+
+    .des {
+        padding: 24px;
+        font-size: 25px;
+    }
 }

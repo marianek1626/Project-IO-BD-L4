@@ -7,14 +7,13 @@
       {% load static %}
      <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
     <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
-      
+  
   </head>
   <body>
     <nav class="lognav"> 
       <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
       <ul class="loglist">
-        <li><span class="reglog" >Witaj, {{request.user}}</span></li>
-        <li><a class="reglog" href="{% url 'logout' %}">Wyloguj</a></li>
+        <li><a href="{% url 'login' %}" class="reglog">Zaloguj</a></li>
       </ul>
     </nav>
     <section><div class="banner">

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Rezerwacje</title>
+    <title>Moje Rezerwacje</title>
     <style>
     #szablon
         {
@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
 </head>
 <body>
-
+ 
 <div id="szablon">
 
 <section><div class="banner">
         <div class="container">
             <div class="banner-content">
-                <h1>Twoje rezerwacje</h1>
+                <h1>Moje rezerwacje</h1>
             </div>
 <h2>
     <br/><br/>
@@ -58,6 +58,16 @@
     <td>{{rezerwacja.termin_rozpoczecia}}</td>
     <td>{{rezerwacja.termin_zakonczenia}}</td>
     <td>{{rezerwacja.czy_anulowana}}</td>
+             <td><button><a href= 'update/{{rezerwacja.id_rezerwacji_stanowiska}}' class="btn btn-warning">Zmień status rezerwacji</a></button></td>
+
+           {% if rezerwacja.czy_anulowana == False %}
+{% endif %}
+                  {% if rezerwacja.czy_anulowana == True %}
+                <div class="col-md-10">
+                     {{ form.rezerwacja.czy_anulowana }}
+                    </div>
+             <td></td>
+{% endif %}
      </tr>
          {% endif %}
 {% endfor %}

@@ -42,7 +42,12 @@ def homepage(request):
    return render(request,'app/homepage.html')
 
 def calendar(request):
-    return render(request,'app/calendar.html')
+    if  request.user is None:
+        return redirect('login')
+    else:
+        print(request.user)
+        print("Okej")
+        return render(request,'app/calendar.html')
 
 def about(request):
    # return HttpResponse('about')
@@ -63,7 +68,19 @@ def index(request):
 #def testRestConsumer(request):
 #    if request.method == 'GET':
 
+def check_user(request):
+    if request.user.is_authenticated:
+        return render(request,'app/index.html')
+    else:
+        return render(request,'app/subpages/beforeLogin/index.html')
 
+def check_user_pracownie(request):
+    if request.user.is_authenticated:
+        return render(request,'app/subpages/afterLogin/pracownie.html')
+    else:
+        return render(request,'app/subpages/beforeLogin/pracownie.html')
+
+choose_place = 1
 
 def loginPage(request):
 	#if request.user.is_authenticated:
@@ -93,6 +110,7 @@ def loginPage(request):
 			#	messages.success(request,'Zalogowano poprawnie')
 			#	return redirect('calendar')
 			user = authenticate(request, email=username, haslo=password)
+			print(request.user.is_authenticated)
 			print(user)
 			#if not request.user.is_authenticated:
 			#    return render(request, 'accounts/register.html')
@@ -100,22 +118,38 @@ def loginPage(request):
 				 x = user.id_uzytkownika
 				 print('OKEJ')
 				 login(request, user)
-				 return redirect('sale')
+				 print(request.user.is_authenticated)
+				 print(user.id_roli)
+				 temp_user = user.id_roli
+				 rola = Rola()
+				 rola.id_roli = 2
+				 if temp_user == rola:
+				    return redirect('adminpage')
+				 else:
+				    return redirect('sale')
 			else:
-				messages.info(request, 'Username OR password is incorrect')
+				messages.info(request, 'Nieprawidłowa nazwa użytkownika lub hasło!')
 
 		context = {}
 		return render(request, 'accounts/login.html', context)
 
+def logoutPage(request):
+    logout(request)
+    return redirect('index')
+
 def event(request):
+    print("JESTEM")
+    print(request.user.is_authenticated)
+    if  not request.user.is_authenticated:
+        print(request.user.is_authenticated)
+        print("NIE ZALOGOWALEM SIE")
+        return redirect('login')
+
     all_events = RezerwacjaStanowiska.objects.all()
-    #get_event_types = Rezerwacja.objects.only('event_type')
+
     if request.GET:
+
         event_arr = []
-        #if request.GET.get('event_type') == "all":
-        #    all_events = Rezerwacja.objects.all()
-        #else:
-        #    all_events = Rezerwacja.objects.filter(event_type__icontains=request.GET.get('event_type'))
 
         for i in all_events:
             event_sub_arr = {}
@@ -128,9 +162,7 @@ def event(request):
         return HttpResponse(json.dumps(event_arr))
 
     context = {
-        "events": all_events,
-        #"get_event_types": get_event_types,
-
+        "events": all_events
     }
     return render(request, 'app/subpages/beforeLogin/stanowiska.html', context)
 
@@ -148,6 +180,97 @@ def registerPage(request):
     context={'form':form}
     return render(request,'accounts/register.html',context)
 
+#def default(o):
+#    if hasattr(o, 'to_json'):
+#        return o.to_json()
+#    raise TypeError(f'Object of type {o.__class__.__name__} is not JSON serializable')
+
+
+def pick_pila_ukosowa(request):
+         #array=[]
+         global choose_place
+         choose_place = request.GET.get("i", None)
+         #choose_place = ord(choose_place)
+         global pila_ukosowa_id
+         pila_ukosowa_id = Stanowisko.objects.get(nazwa_stanowiska="Piła ukosowa").id_stanowiska
+         print(pila_ukosowa_id)
+         #data= {"id_stanowiska": pila_ukosowa_id}
+         #array.append(data)
+         #print(array)
+         #return JsonResponse(json.dumps(array),safe=False)
+         data = {}
+         return JsonResponse(data)
+
+def pick_wiertarka_stolowa(request):
+         #array=[]
+         global choose_place
+         choose_place = request.GET.get("i", None)
+         global wiertarka_stolowa_id
+         wiertarka_stolowa_id = Stanowisko.objects.get(nazwa_stanowiska="Wiertarka stołowa").id_stanowiska
+         print(wiertarka_stolowa_id)
+         #data= {"id_stanowiska": pila_ukosowa_id}
+         #array.append(data)
+         #print(array)
+         #return JsonResponse(json.dumps(array),safe=False)
+         data = {}
+         return JsonResponse(data)
+
+def pick_mini_szlifierka(request):
+         #array=[]
+         global mini_szlifierka_id
+         global choose_place
+         choose_place = request.GET.get("i", None)
+         mini_szlifierka_id = Stanowisko.objects.get(nazwa_stanowiska="Mini szlifierka").id_stanowiska
+         print(mini_szlifierka_id)
+         #data= {"id_stanowiska": pila_ukosowa_id}
+         #array.append(data)
+         #print(array)
+         #return JsonResponse(json.dumps(array),safe=False)
+         data = {}
+         return JsonResponse(data)
+
+def pick_frezarka_gornowrzecinowa(request):
+         #array=[]
+         global frezarka_gornowrzecinowa_id
+         global choose_place
+         choose_place = request.GET.get("i", None)
+         frezarka_gornowrzecinowa_id = Stanowisko.objects.get(nazwa_stanowiska="Frezarka górnowrzecinowa").id_stanowiska
+         print(frezarka_gornowrzecinowa_id)
+         #data= {"id_stanowiska": pila_ukosowa_id}
+         #array.append(data)
+         #print(array)
+         #return JsonResponse(json.dumps(array),safe=False)
+         data = {}
+         return JsonResponse(data)
+
+def pick_przecinarka_do_metalu(request):
+         #array=[]
+         global przecinarka_do_metalu_id
+         global choose_place
+         choose_place = request.GET.get("i", None)
+         przecinarka_do_metalu_id = Stanowisko.objects.get(nazwa_stanowiska="Przecinarka do metalu").id_stanowiska
+         print(przecinarka_do_metalu_id)
+         #data= {"id_stanowiska": pila_ukosowa_id}
+         #array.append(data)
+         #print(array)
+         #return JsonResponse(json.dumps(array),safe=False)
+         data = {}
+         return JsonResponse(data)
+
+def pick_majsterkowicz(request):
+         #array=[]
+         global majsterkowicz_id
+         global choose_place
+         choose_place = request.GET.get("i", None)
+         majsterkowicz_id = Stanowisko.objects.get(nazwa_stanowiska="Majsterkowicz, rzemieślnik").id_stanowiska
+         print(majsterkowicz_id)
+         #data= {"id_stanowiska": pila_ukosowa_id}
+         #array.append(data)
+         #print(array)
+         #return JsonResponse(json.dumps(array),safe=False)
+         data = {}
+         return JsonResponse(data)
+
 def add_event(request):
     #events_all = Rezerwacja.objects.all()
     title = request.GET.get("title", None)
@@ -156,17 +279,54 @@ def add_event(request):
     print(start)
     print(end)
     #user = Uzytkownik.objects.get(email=request.user.email)
-
+ 
     #form = AddEventForm() 
-    
-    #if request.method == 'POST':
-    #    form = AddEventForm(request.POST or None)
-    #user = Uzytkownik()
-    #user.id_uzytkownika=1
-    booking = Rezerwacja()
-    booking.id_rezerwacji=1
+
+    print("Choose place: " + choose_place)
+    global choose_place_final
+    if choose_place == '0':
+        choose_place_final = pila_ukosowa_id
+    elif choose_place== '1':
+        print("okej")
+        choose_place_final = wiertarka_stolowa_id
+    elif choose_place== '2':
+        choose_place_final = mini_szlifierka_id
+    elif choose_place== '3':
+        choose_place_final = frezarka_gornowrzecinowa_id
+    elif choose_place== '4':
+        choose_place_final = przecinarka_do_metalu_id
+    elif choose_place== '5':
+        choose_place_final = majsterkowicz_id
+    else:
+        print("Błąd")
+
+    current_user = request.user
+    #print("Wybor ostateczny: " + str(choose_place_final))
+    print(current_user.id_uzytkownika)
+    user = Uzytkownik()
+    #user.id_uzytkownika=request.user.id_uzytkownika
+    user.id_uzytkownika=current_user.id_uzytkownika
+    event1 = Rezerwacja.objects.create(
+        id_uzytkownika = user,
+        czy_anulowana = False
+        )
+    print(event1)
+    event1.save()
+
+    booking = Rezerwacja.objects.get(id_rezerwacji=event1.id_rezerwacji)
+    #booking.id_rezerwacji=1
+    print(booking)
+    #place_test = {}
+    #place_json = pick_pila_ukosowa(request)
+    #a = pick_pila_ukosowa(request)
+    #place_json = json.dumps(a, default = default)
+    #print(pila_ukosowa_id)
+    #print(place_json)
+    #place_data = json.loads(place_json)
+    #print(place_data)
     place = Stanowisko()
-    place.id_stanowiska=1
+    place.id_stanowiska=choose_place_final
+    #pila_ukosowa_id = Stanowisko.objects.get(nazwa_stanowiska="Piła ukosowa").id_stanowiska
     #    if form.is_valid():
     event = RezerwacjaStanowiska.objects.create(
                 #id_rezerwacji = 47, # będzie się autoinkrementował ?
@@ -176,22 +336,30 @@ def add_event(request):
                 termin_zakonczenia=end,
                 czy_anulowana = False,
             )
-    print(x)
-    #event1 = Rezerwacja.objects.create(
-        #id_uzytkownika = x,
-        #czy_anulowana = False
-        #)
     event.save()
-    #event1.save()
+    print(event)
+    print(x)
+    #current_user = request.user
+    #print(current_user.id_uzytkownika)
+    
     data = {}
     return JsonResponse(data)
+
+
+
+
 
 def sale(request):
    pracownia = Sala.objects.all()
    #sale_list = serializers.serialize('json', sale)
     #return HttpResponse(sale_list, content_type="text/json-comment-filtered")
-   return render(request, 'app/subpages/afterLogin/pracownie.html', {'pracownie': pracownia})
+   return render(request, 'app/subpages/beforeLogin/pracownie.html', {'pracownie': pracownia})
 
+def sale_login(request):
+   pracownia = Sala.objects.all()
+   #sale_list = serializers.serialize('json', sale)
+    #return HttpResponse(sale_list, content_type="text/json-comment-filtered")
+   return render(request, 'app/subpages/afterLogin/pracownie.html', {'pracownie': pracownia})
 
 # return render(request, 'pracownie.html', {'pracownie': pracownia})
 # sale_list = list(sale)  # important: convert the QuerySet to a list object
@@ -206,7 +374,7 @@ def stanowiska(request):
    stanowisko = Stanowisko.objects.all()
    return render(request, 'app/subpages/beforeLogin/stanowiska.html', {'stanowiska': stanowisko})
 
-x=1
+
 
 def rezerwacje(request):
    rezerwacja = Rezerwacja.objects.all()
@@ -231,7 +399,7 @@ def updaterezerwacje(request, id):
    rezrwacja = Rezerwacja.object.get(id=id)
    form = RezerwacjaCreate(request.POST or None, instace=product)
 
-
+x=1
 def deleterezerwacje(request, id):
    rezerwacja = Rezerwacja.object.get(id=id)
 

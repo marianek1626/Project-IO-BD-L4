@@ -581,6 +581,7 @@
     <Content Include="app\templates\app\secondpage.html" />
     <Content Include="app\templates\app\stanowiska.html" />
     <Content Include="app\templates\app\subpages\afterLogin\pracownie.html" />
+    <Content Include="app\templates\app\subpages\beforeLogin\index.html" />
     <Content Include="app\templates\app\subpages\beforeLogin\pracownie.html" />
     <Content Include="app\templates\app\subpages\beforeLogin\stanowiska.html" />
     <Content Include="app\templates\app\subpages\login.html" />

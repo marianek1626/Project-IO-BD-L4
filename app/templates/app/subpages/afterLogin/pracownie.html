@@ -15,7 +15,8 @@
     <nav class="lognav">
       <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
       <ul class="loglist">
-        <li><a href="{% url 'login' %}" class="reglog">Zaloguj</a></li>
+                <li><span class="reglog" >Witaj, {{request.user}}</span></li>
+        <li><a class="reglog" href="{% url 'logout' %}">Wyloguj</a></li>
       </ul>
     </nav>
     <div class="banner">

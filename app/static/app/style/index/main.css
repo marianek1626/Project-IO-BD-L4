@@ -50,7 +50,17 @@ nav ul li a {
     padding: 0 13px;
 }
 
+
+nav ul li span {
+    color: white;
+    padding: 0 13px;
+}
+
 a.reglog {
+    font-size: 17px;
+}
+
+span.reglog {
     font-size: 17px;
 }
 

@@ -253,7 +253,8 @@
     <nav class="lognav">
       <label class="logo"><a href="{% url 'index' %}">PCI</a></label>
       <ul class="loglist">
-        <li><a href="{% url 'login' %}" class="reglog">Zaloguj</a></li>
+ <li><span class="reglog" >Witaj, {{request.user.email}}</span></li>
+        <li><a class="reglog" href="{% url 'logout' %}">Wyloguj</a></li>
       </ul>
     </nav>
     <div class="banner">
@@ -265,62 +266,115 @@
       </div>
  <div id='calendar'></div>
     <div class="workshops">
-      <div class="responsive">
+      <div class="responsive" tabindex="1">
         <div class="gallery">
-          <a href="{% static "app/images/stanowiska/pila-ukosowa.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/stanowiska/pila-ukosowa.jpg" %}" alt="warsztat"
-          /></a>
+          <img src="{% static "app/images/stanowiska/pila-ukosowa.jpg" %}" alt="warsztat"
+          />
           <div class="des">Piła ukosowa</div>
-          <input type="checkbox" name="pila_ukosowa" value="pila_ukosowa" /> 
+
         </div>
       </div>
-      <div class="responsive">
+      <div class="responsive" tabindex="2">
         <div class="gallery">
-          <a href="{% static "app/images/stanowiska/wiertarka-stolowa.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/stanowiska/wiertarka-stolowa.jpg" %}" alt="ar-vr"
-          /></a>
+          
+            <img src="{% static "app/images/stanowiska/wiertarka-stolowa.jpg" %}" alt="ar-vr"
+          />
           <div class="des">Wiertarka Stołowa</div>
-            <input id="reload" type="checkbox" name="wiert_stol" value="wiert_stol" /> 
+
         </div>
       </div>
-      <div class="responsive">
+      <div class="responsive" tabindex="3">
         <div class="gallery">
-          <a href="{% static "app/images/stanowiska/mini-szlifierka.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/stanowiska/mini-szlifierka.jpg" %}" alt="3d"
-          /></a>
+          <img src="{% static "app/images/stanowiska/mini-szlifierka.jpg" %}" alt="3d"
+          />
           <div class="des">Mini szlifierka</div>
-            <input type="checkbox" name="szlifierka" value="szlifierka" /> 
+
         </div>
       </div>
-      <div class="responsive">
+      <div class="responsive" tabindex="4">
         <div class="gallery">
-          <a href="{% static "app/images/stanowiska/frezarka-gornowrzecionowa.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/stanowiska/frezarka-gornowrzecionowa.jpg" %}" alt="hi-end"
-          /></a>
+          <img src="{% static "app/images/stanowiska/frezarka-gornowrzecionowa.jpg" %}" alt="hi-end"
+          />
           <div class="des">Frezarka górnowrzecinowa</div>
-            <input type="checkbox" name="frezarka" value="frezarka" /> 
         </div>
       </div>
-      <div class="responsive">
+      <div class="responsive" tabindex="5">
         <div class="gallery">
-          <a href="{% static "app/images/stanowiska/przecinarka-do-metalu.jpg" %}" target="_blank"
-            ><img src="{% static "app/images/stanowiska/przecinarka-do-metalu.jpg" %}" alt="aula"
-          /></a>
+          <img src="{% static "app/images/stanowiska/przecinarka-do-metalu.jpg" %}" alt="aula"
+          />
           <div class="des">Przecinarka do metalu</div>
-            <input type="checkbox" name="przecin_metal" value="przecin_metal" /> 
         </div>
       </div>
-      <div class="responsive">
+      <div class="responsive" tabindex="6">
         <div class="gallery">
-          <a href="{% static "app/images/stanowiska/majsterkowicz-rzemieslnik.jpg" %}" target="_blank"
-            ><img
+          <img
               src="{% static "app/images/stanowiska/majsterkowicz-rzemieslnik.jpg" %}"
               alt="elektroniczna"
-          /></a>
+          />
           <div class="des">Majsterkowicz, rzemieślnik</div>
-<input type="checkbox" name="majster" value="majster" /> 
         </div>
       </div>
     </div>
   </body>
 </html>
+
+
+<script>
+    let el = document.querySelectorAll(".responsive");
+    console.log(el);
+    for (let i = 0; i < el.length; i++) {
+        el[i].addEventListener('click', function () {
+            switch (i) {
+                case 0:
+                    console.log("Kliknales w piłe ukosową");
+                    $.ajax({
+                        url: '/calendar/pick_pila_ukosowa/',
+                        type: "GET",
+                        data: {"i": i}
+                  });
+                    break;
+                case 1:
+                    console.log("Kliknales w wiertarke");
+                    $.ajax({
+                     url: '/calendar/pick_wiertarka_stolowa/',
+                        type: "GET",
+                     data: {"i": i}
+                  });
+                    break;
+                case 2:
+                     console.log("Kliknales w mini szlifierke");
+                    $.ajax({
+                     url: '/calendar/pick_mini_szlifierka/',
+                        type: "GET",
+                     data: {"i": i}
+                  });
+                    break;
+                case 3:
+                    console.log("Kliknales w frezarke");
+                    $.ajax({
+                     url: '/calendar/pick_frezarka_gornowrzecinowa/',
+                        type: "GET",
+                     data: {"i": i}
+                  });
+                    break;
+                case 4:
+                    console.log("Kliknales w przecinarke do metalu");
+                    $.ajax({
+                     url: '/calendar/pick_przecinarka_do_metalu/',
+                        type: "GET",
+                     data: {"i": i}
+                  });
+                    break;
+                case 5:
+                    console.log("Kliknales w majsterkowicz");
+                    $.ajax({
+                     url: '/calendar/pick_majsterkowicz/',
+                        type: "GET",
+                     data: {"i": i}
+                  });
+                    break;
+            }
+        })
+    }
+    
+</script>

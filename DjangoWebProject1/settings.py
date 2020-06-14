@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'rest_framework',
 ]
 
 AUTHENTICATION_BACKENDS = ['app.backends.UserAuthBackend', 'django.contrib.auth.backends.ModelBackend']

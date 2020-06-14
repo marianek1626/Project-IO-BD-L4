@@ -11,6 +11,8 @@ class UserAuthBackend(object):
             user = Uzytkownik.objects.get(email=email)
 
             if haslo == getattr(user,'haslo'):
+                user.is_authenticated = True
+                user.backend=UserAuthBackend
                 return user
             else:
                 return None

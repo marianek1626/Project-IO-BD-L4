@@ -78,7 +78,7 @@ class Rola(models.Model):
         db_table = 'rola'
         verbose_name_plural = 'Role'
     def __str__(self):
-        return self.nazwa_roli
+        return str(self.id_roli) 
 
 class Sala(models.Model):
     id_sali = models.AutoField(primary_key=True)
@@ -116,7 +116,8 @@ class Stanowisko(models.Model):
         else:
             return "Tak"
     def __str__(self):
-        return self.nazwa_stanowiska
+        dane = self.nazwa_stanowiska + " id: " + str(self.id_stanowiska)
+        return dane
 
 class SalaOpiekun(models.Model):
     id_sala_opiekun = models.AutoField(primary_key=True)
@@ -151,7 +152,7 @@ class Uzytkownik(models.Model):
      return self.email
 
     def is_authenticated(self):
-        return True
+        return False
 
     def has_perm(self, perm, obj=None):
      return self.is_superuser
