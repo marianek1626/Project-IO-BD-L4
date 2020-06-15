@@ -512,6 +512,8 @@
     <Content Include="app\static\app\scripts\jquery-3.4.1.min.js" />
     <Content Include="app\static\app\scripts\myCalendar.js" />
     <Content Include="app\static\app\style\adminPage\adminstyle.css" />
+    <Content Include="app\static\app\style\banneradminstyle.css" />
+    <Content Include="app\static\app\style\calendarstyle.css" />
     <Content Include="app\static\app\style\cal_bootstrap\main.css" />
     <Content Include="app\static\app\style\cal_bootstrap\main.min.css" />
     <Content Include="app\static\app\style\cal_core\main.css" />

@@ -1,10 +1,10 @@
 .container {
-    width: 100%;
-    margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .banner {
-    background-image: url(../../app/images/banery/pracownia.jpg);
+    background-image: url(../images/banery/pracownia.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,178 +13,178 @@
 }
 
 .banner-content {
-    color: #fff;
-    padding-top: 50px;
-    text-align: center;
+  color: #fff;
+  padding-top: 50px;
+  text-align: center;
 }
 
-    /* .banner-content span {
+/* .banner-content span {
   font-size: 18px;
   font-weight: 500;
   letter-spacing: 3px;
 } */
 
-    .banner-content h1 {
-        margin-bottom: 30px;
-        font-size: 60px;
-        font-weight: 600;
-        letter-spacing: 3px;
-        font-family: sans-serif;
-        text-shadow: 2px 2px #000;
-    }
+.banner-content h1 {
+  margin-bottom: 30px;
+  font-size: 60px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-family: sans-serif;
+  text-shadow: 2px 2px #000;
+}
 
-    .banner-content a {
-        text-decoration: none;
-    }
+.banner-content a {
+  text-decoration: none;
+}
 
-    .banner-content .btn-one {
-        padding: 10px 30px;
-        background-color: rgba(0, 0, 0, 0.3);
-        border: 2px solid #fff;
-        border-radius: 20px;
-        font-size: 18px;
-        font-weight: 600;
-        font-style: italic;
-        color: #fff;
-    }
+.banner-content .btn-one {
+  padding: 10px 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 2px solid #fff;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: #fff;
+}
 
-    .banner-content .btn-two {
-        padding: 10px 30px;
-        background-color: #fff;
-        border: 2px solid #000;
-        border-radius: 20px;
-        font-size: 18px;
-        font-weight: 600;
-        font-style: italic;
-        color: #000;
-    }
+.banner-content .btn-two {
+  padding: 10px 30px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: italic;
+  color: #000;
+}
 
-    .banner-content .btn-one:hover {
-        background-color: #fff;
-        border: 2px solid #000;
-        color: #000;
-    }
+.banner-content .btn-one:hover {
+  background-color: #fff;
+  border: 2px solid #000;
+  color: #000;
+}
 
-    .banner-content .btn-two:hover {
-        background-color: #000;
-        border: 2px solid #fff;
-        color: #fff;
-    }
+.banner-content .btn-two:hover {
+  background-color: #000;
+  border: 2px solid #fff;
+  color: #fff;
+}
 
 @media (max-width: 768px) {
-    .banner-content h1 {
-        font-size: 50px;
-    }
+  .banner-content h1 {
+    font-size: 50px;
+  }
 }
 
 @media (min-width: 1000px) {
-    .banner {
-        height: calc(30vh - 30px);
-    }
+  .banner {
+    height: calc(30vh - 30px);
+  }
 
-    .banner-content {
-        padding-top: 60px;
-    }
+  /* .banner-content {
+    padding-top: 60px;
+  } */
 
-        .banner-content h1 {
-            margin-bottom: 40px;
-            font-size: 70px;
-            text-shadow: 2.5px 2.5px #000;
-        }
+  .banner-content h1 {
+    margin-bottom: 40px;
+    font-size: 60px;
+    text-shadow: 2.5px 2.5px #000;
+  }
 
-        .banner-content .btn-one {
-            padding: 13px 39px;
-            font-size: 25px;
-            border-radius: 27px;
-        }
+  .banner-content .btn-one {
+    padding: 8px 34px;
+    font-size: 20px;
+    border-radius: 22px;
+  }
 
-        .banner-content .btn-two {
-            padding: 13px 39px;
-            font-size: 25px;
-            border-radius: 27px;
-        }
+  .banner-content .btn-two {
+    padding: 8px 34px;
+    font-size: 20px;
+    border-radius: 22px;
+  }
 }
 
 @media (min-width: 1400px) {
-    .banner {
-        height: calc(30vh - 40px);
-    }
+  .banner {
+    height: calc(25vh - 40px);
+  }
 
-    .banner-content {
-        padding-top: 75px;
-    }
+  /* .banner-content {
+    padding-top: 75px;
+  } */
 
-        .banner-content h1 {
-            margin-bottom: 50px;
-            font-size: 80px;
-            text-shadow: 3px 3px #000;
-        }
+  .banner-content h1 {
+    margin-bottom: 40px;
+    font-size: 65px;
+    text-shadow: 3px 3px #000;
+  }
 
-        .banner-content .btn-one {
-            padding: 23px 49px;
-            font-size: 35px;
-            border-radius: 37px;
-        }
+  .banner-content .btn-one {
+    padding: 13px 39px;
+    font-size: 25px;
+    border-radius: 27px;
+  }
 
-        .banner-content .btn-two {
-            padding: 23px 49px;
-            font-size: 35px;
-            border-radius: 37px;
-        }
+  .banner-content .btn-two {
+    padding: 13px 39px;
+    font-size: 25px;
+    border-radius: 27px;
+  }
 }
 
 @media (min-width: 1900px) {
-    .banner {
-        height: calc(30vh - 50px);
-    }
+  .banner {
+    height: calc(20vh - 50px);
+  }
 
-    .banner-content {
-        padding-top: 100px;
-    }
+  /* .banner-content {
+    padding-top: 90px;
+  } */
 
-        .banner-content h1 {
-            margin-bottom: 60px;
-            font-size: 90px;
-            text-shadow: 3.5px 3.5px #000;
-        }
+  .banner-content h1 {
+    margin-bottom: 40px;
+    font-size: 70px;
+    text-shadow: 3.5px 3.5px #000;
+  }
 
-        .banner-content .btn-one {
-            padding: 33px 59px;
-            font-size: 45px;
-            border-radius: 47px;
-        }
+  .banner-content .btn-one {
+    padding: 18px 44px;
+    font-size: 30px;
+    border-radius: 32px;
+  }
 
-        .banner-content .btn-two {
-            padding: 33px 59px;
-            font-size: 45px;
-            border-radius: 47px;
-        }
+  .banner-content .btn-two {
+    padding: 18px 44px;
+    font-size: 30px;
+    border-radius: 32px;
+  }
 }
 
 @media (min-width: 2500px) {
-    .banner {
-        height: calc(30vh - 60px);
-    }
+  .banner {
+    height: calc(15vh - 60px);
+  }
 
-    .banner-content {
-        padding-top: 135px;
-    }
+  /* .banner-content {
+    padding-top: 105px;
+  } */
 
-        .banner-content h1 {
-            margin-bottom: 70px;
-            font-size: 100px;
-            text-shadow: 4px 4px #000;
-        }
+  .banner-content h1 {
+    margin-bottom: 50px;
+    font-size: 80px;
+    text-shadow: 4px 4px #000;
+  }
 
-        .banner-content .btn-one {
-            padding: 43px 69px;
-            font-size: 55px;
-            border-radius: 57px;
-        }
+  .banner-content .btn-one {
+    padding: 28px 54px;
+    font-size: 40px;
+    border-radius: 42px;
+  }
 
-        .banner-content .btn-two {
-            padding: 43px 69px;
-            font-size: 55px;
-            border-radius: 57px;
-        }
+  .banner-content .btn-two {
+    padding: 28px 54px;
+    font-size: 40px;
+    border-radius: 42px;
+  }
 }

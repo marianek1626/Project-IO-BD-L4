@@ -46,7 +46,6 @@ def calendar(request):
         return redirect('login')
     else:
         print(request.user)
-        print("Okej")
         return render(request,'app/calendar.html')
 
 def about(request):
@@ -95,11 +94,10 @@ def loginPage(request):
 			username1 = 'admin11@o2.pl'
 			password1 = 'admin11'
 			password1 = hashlib.sha512(password1.encode()).hexdigest()
-			print(password1)
 			params = {'login':username1,'password':password1}
 			#r = requests.post(url,params=params)
-			print(username)
-			print(password)
+			#print(username)
+			#print(password)
 			#r1 = requests.post('https://fakepci.herokuapp.com/login?login=admin11@o2.pl&password=c230e0811f617ea267bab08f8a62ca0585218cfa33676f6ed7d67b7d5af36192df3879350d5accc26a22486c8774bce92c3cfe3a3e5c9aa270cce55709db6821')
 			#print(r.json())
 			#password_hash = hashlib.sha512(password.encode()).hexdigest()
@@ -110,16 +108,16 @@ def loginPage(request):
 			#	messages.success(request,'Zalogowano poprawnie')
 			#	return redirect('calendar')
 			user = authenticate(request, email=username, haslo=password)
-			print(request.user.is_authenticated)
-			print(user)
+			#print(request.user.is_authenticated)
+			#print(user)
 			#if not request.user.is_authenticated:
 			#    return render(request, 'accounts/register.html')
 			if user is not None:
 				 x = user.id_uzytkownika
-				 print('OKEJ')
+				 #print('OKEJ')
 				 login(request, user)
-				 print(request.user.is_authenticated)
-				 print(user.id_roli)
+				 #print(request.user.is_authenticated)
+				 #print(user.id_roli)
 				 temp_user = user.id_roli
 				 rola = Rola()
 				 rola.id_roli = 2
@@ -138,11 +136,8 @@ def logoutPage(request):
     return redirect('index')
 
 def event(request):
-    print("JESTEM")
-    print(request.user.is_authenticated)
+    #print(request.user.is_authenticated)
     if  not request.user.is_authenticated:
-        print(request.user.is_authenticated)
-        print("NIE ZALOGOWALEM SIE")
         return redirect('login')
 
     all_events = RezerwacjaStanowiska.objects.all()
@@ -282,12 +277,12 @@ def add_event(request):
  
     #form = AddEventForm() 
 
-    print("Choose place: " + choose_place)
+    #print("Choose place: " + choose_place)
     global choose_place_final
     if choose_place == '0':
         choose_place_final = pila_ukosowa_id
     elif choose_place== '1':
-        print("okej")
+        #print("okej")
         choose_place_final = wiertarka_stolowa_id
     elif choose_place== '2':
         choose_place_final = mini_szlifierka_id
@@ -302,7 +297,7 @@ def add_event(request):
 
     current_user = request.user
     #print("Wybor ostateczny: " + str(choose_place_final))
-    print(current_user.id_uzytkownika)
+    #print(current_user.id_uzytkownika)
     user = Uzytkownik()
     #user.id_uzytkownika=request.user.id_uzytkownika
     user.id_uzytkownika=current_user.id_uzytkownika
@@ -310,12 +305,12 @@ def add_event(request):
         id_uzytkownika = user,
         czy_anulowana = False
         )
-    print(event1)
+    #print(event1)
     event1.save()
 
     booking = Rezerwacja.objects.get(id_rezerwacji=event1.id_rezerwacji)
     #booking.id_rezerwacji=1
-    print(booking)
+    #print(booking)
     #place_test = {}
     #place_json = pick_pila_ukosowa(request)
     #a = pick_pila_ukosowa(request)
@@ -337,8 +332,8 @@ def add_event(request):
                 czy_anulowana = False,
             )
     event.save()
-    print(event)
-    print(x)
+    #print(event)
+    #print(x)
     #current_user = request.user
     #print(current_user.id_uzytkownika)
     
@@ -385,6 +380,20 @@ def rezerwacjestanowiska(request):
     user = Uzytkownik.objects.filter(id_uzytkownika=x)
     return render(request, 'app/rezerwacje.html', {'rezerwacjestanowiska': rezerwacjestanowiska, 'user':user})
 
+def updaterezstan(request, id_rezerwacja):
+    rezerwacjestanowiska = RezerwacjaStanowiska.objects.all()
+    user = Uzytkownik.objects.filter(id_uzytkownika=x)
+    id_rez = int(id_rezerwacja)
+    try:
+        rez = RezerwacjaStanowiska.objects.get(id_rezerwacji_stanowiska = id_rez)
+    except RezerwacjaStanowiska.DoesNotExist:
+        return redirect('rezerwacje')
+    if rez.czy_anulowana==False:
+        rez.czy_anulowana=True
+    else:
+        rez.czy_anulowana=False
+    rez.save()
+    return render(request, 'app/rezerwacje.html', {'rezerwacjestanowiska': rezerwacjestanowiska, 'user': user})
 
 def createrezerwacje(request):
    form = RezerwacjaCreate(requset.POST or None)

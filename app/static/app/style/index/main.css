@@ -1,197 +1,172 @@
 * {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+
+}
+
+h1 {
+    color: white;
 }
 
 body {
-    font-family: sans-serif;
+  font-family: sans-serif;
 }
 
 nav {
-    width: 100%;
+  width: 100%;
 }
 
-    nav.lognav {
-        background: #021625;
-        height: 25px;
-    }
+nav.lognav {
+  background: #021625;
+  height: 25px;
+}
 
 label.logo {
-    color: white;
-    font-size: 20px;
-    line-height: 25px;
-    padding: 0 20px;
-    font-weight: bold;
+  color: white;
+  font-size: 20px;
+  line-height: 25px;
+  padding: 0 20px;
+  font-weight: bold;
 }
 
-    label.logo a {
-        color: white;
-    }
+label.logo a {
+  color: white;
+}
 
 nav ul {
-    float: right;
-    padding-right: 20px;
+  float: right;
+  padding-right: 20px;
 }
 
-    nav ul li {
-        display: inline-block;
-        margin: 0 5px;
-    }
+nav ul li {
+  display: inline-block;
+  margin: 0 5px;
+}
 
 nav.lognav ul.loglist li {
-    line-height: 25px;
+  line-height: 25px;
 }
 
 nav ul li a {
-    color: white;
-    padding: 0 13px;
-}
-
-
-nav ul li span {
-    color: white;
-    padding: 0 13px;
+  color: white;
+  padding: 0 13px;
 }
 
 a.reglog {
-    font-size: 17px;
-}
-
-span.reglog {
-    font-size: 17px;
+  font-size: 17px;
 }
 
 .reglog:hover {
-    background: #1b9bff;
-    transition: 0.5s;
+  background: #1b9bff;
+  transition: 0.5s;
 }
 
 @media (max-width: 768px) {
-    a.reglog {
-        font-size: 16px;
-    }
+  a.reglog {
+    font-size: 16px;
+  }
 
-    ul.loglist {
-        margin-right: 10px;
-    }
+  ul.loglist {
+    margin-right: 10px;
+  }
 
-    a:hover {
-        background: none;
-        color: #0082e6;
-    }
+  a:hover {
+    background: none;
+    color: #0082e6;
+  }
 
-    nav ul {
-        padding-right: 5px;
-    }
+  nav ul {
+    padding-right: 5px;
+  }
 }
 
 @media (min-width: 1000px) {
-    nav.lognav {
-        height: 30px;
-    }
-
-    label.logo {
-        font-size: 25px;
-        line-height: 30px;
-    }
-
-    nav.lognav ul.loglist li {
-        line-height: 30px;
-    }
-
-    a.reglog {
-        font-size: 20px;
-    }
-
-    ul.loglist {
-        margin-right: 13px;
-    }
-
-    nav ul {
-        padding-right: 6.5px;
-    }
+  nav.lognav {
+    height: 30px;
+  }
+  label.logo {
+    font-size: 25px;
+    line-height: 30px;
+  }
+  nav.lognav ul.loglist li {
+    line-height: 30px;
+  }
+  a.reglog {
+    font-size: 20px;
+  }
+  ul.loglist {
+    margin-right: 13px;
+  }
+  nav ul {
+    padding-right: 6.5px;
+  }
 }
 
 @media (min-width: 1400px) {
-    nav.lognav {
-        height: 40px;
-    }
-
-    label.logo {
-        font-size: 35px;
-        line-height: 40px;
-    }
-
-    nav.lognav ul.loglist li {
-        line-height: 40px;
-    }
-
-    a.reglog {
-        font-size: 28px;
-    }
-
-    ul.loglist {
-        margin-right: 17px;
-    }
-
-    nav ul {
-        padding-right: 8.5px;
-    }
+  nav.lognav {
+    height: 40px;
+  }
+  label.logo {
+    font-size: 35px;
+    line-height: 40px;
+  }
+  nav.lognav ul.loglist li {
+    line-height: 40px;
+  }
+  a.reglog {
+    font-size: 28px;
+  }
+  ul.loglist {
+    margin-right: 17px;
+  }
+  nav ul {
+    padding-right: 8.5px;
+  }
 }
 
 @media (min-width: 1900px) {
-    nav.lognav {
-        height: 50px;
-    }
-
-    label.logo {
-        font-size: 45px;
-        line-height: 50px;
-    }
-
-    nav.lognav ul.loglist li {
-        line-height: 50px;
-    }
-
-    a.reglog {
-        font-size: 38px;
-    }
-
-    ul.loglist {
-        margin-right: 22px;
-    }
-
-    nav ul {
-        padding-right: 11px;
-    }
+  nav.lognav {
+    height: 50px;
+  }
+  label.logo {
+    font-size: 45px;
+    line-height: 50px;
+  }
+  nav.lognav ul.loglist li {
+    line-height: 50px;
+  }
+  a.reglog {
+    font-size: 38px;
+  }
+  ul.loglist {
+    margin-right: 22px;
+  }
+  nav ul {
+    padding-right: 11px;
+  }
 }
 
 @media (min-width: 2500px) {
-    nav.lognav {
-        height: 60px;
-    }
-
-    label.logo {
-        font-size: 55px;
-        line-height: 60px;
-    }
-
-    nav.lognav ul.loglist li {
-        line-height: 60px;
-    }
-
-    a.reglog {
-        font-size: 48px;
-    }
-
-    ul.loglist {
-        margin-right: 28px;
-    }
-
-    nav ul {
-        padding-right: 14px;
-    }
+  nav.lognav {
+    height: 60px;
+  }
+  label.logo {
+    font-size: 55px;
+    line-height: 60px;
+  }
+  nav.lognav ul.loglist li {
+    line-height: 60px;
+  }
+  a.reglog {
+    font-size: 48px;
+  }
+  ul.loglist {
+    margin-right: 28px;
+  }
+  nav ul {
+    padding-right: 14px;
+  }
 }

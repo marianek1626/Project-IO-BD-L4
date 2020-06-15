@@ -35,6 +35,7 @@ urlpatterns = [
     path('logout/', views.logoutPage, name='logout'),
     path('register/', views.registerPage, name='register'),
     path('rezerwacje/', views.rezerwacjestanowiska, name='rezerwacjestanowiska'),
+    path('rezerwacje/<int:id_rezerwacja>', views.updaterezstan),
     path('sale/', views.check_user_pracownie, name='sale'),
     path('sale/', views.sale_login, name='sale_login'),
     path('stanowiska/', views.stanowiska, name='stanowiska'),

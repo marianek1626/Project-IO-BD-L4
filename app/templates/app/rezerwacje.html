@@ -3,25 +3,16 @@
 <head>
     <title>Moje Rezerwacje</title>
     <style>
-    #szablon
-        {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-        width: 1000px;
-        background-color: white;
-        }
     #table, th, td {
         border: 1px solid black;
-        background-color:#021625;
-
+        background-color:#1a5b8d;
 }
      </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
      <link rel="stylesheet" href="{% static "app/style/index/main.css" %}" />
-    <link rel="stylesheet" href="{% static "app/style/index/mainbannerstyle.css" %}" />
+<link rel="stylesheet" href="{% static "app/style/banneradminstyle.css" %}" />
 </head>
 <body>
  
@@ -31,6 +22,7 @@
         <div class="container">
             <div class="banner-content">
                 <h1>Moje rezerwacje</h1>
+                   <a href="{% url 'sale' %}" class="btn-one">Wróć do wyboru sal</a>
             </div>
 <h2>
     <br/><br/>
@@ -58,13 +50,13 @@
     <td>{{rezerwacja.termin_rozpoczecia}}</td>
     <td>{{rezerwacja.termin_zakonczenia}}</td>
     <td>{{rezerwacja.czy_anulowana}}</td>
-             <td><button><a href= 'update/{{rezerwacja.id_rezerwacji_stanowiska}}' class="btn btn-warning">Zmień status rezerwacji</a></button></td>
+             <td><button><a href= '{{rezerwacja.id_rezerwacji_stanowiska}}' class="btn btn-warning">Zmień status rezerwacji</a></button></td>
 
            {% if rezerwacja.czy_anulowana == False %}
 {% endif %}
                   {% if rezerwacja.czy_anulowana == True %}
                 <div class="col-md-10">
-                     {{ form.rezerwacja.czy_anulowana }}
+                     
                     </div>
              <td></td>
 {% endif %}
@@ -72,11 +64,9 @@
          {% endif %}
 {% endfor %}
  {% endblock %}
+         <a href= 'app/rezerwacje' class="btn btn-warning"></a>
          {% endfor %}
        </table>
-     <div class="banner-content">
-                <a href="{% url 'calendar' %}" class="btn-one">Kaledarz</a>
-     </div>
     <br/><br/>
     </h2>
 </div>
